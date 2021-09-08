@@ -3,7 +3,7 @@ html{
     font-family: 'Hina Mincho', serif;
 }
 body{
-    font-size: 5rem;
+    font-size: 1.5rem;
 }
 a{
     color:#000;
@@ -149,7 +149,8 @@ justify-content: center;
 }
 
 .date{
-    font-size:3rem;
+    font-size:2rem;
+   margin:4rem;
 }
 
 @media only screen and (max-width: 770px){
@@ -187,5 +188,10 @@ h1{
 }
 button{
     font-size: 4rem;
+}
+.date{
+    font-size:4rem;
+   
+    
 }
 }

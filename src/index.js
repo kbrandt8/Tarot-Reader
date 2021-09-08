@@ -8,7 +8,7 @@ import {ContextProvider} from "./Context"
 
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
   <ContextProvider>
   <React.StrictMode>
     <App />

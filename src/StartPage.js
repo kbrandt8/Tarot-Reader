@@ -14,7 +14,7 @@ function StartPage(){
         <div className="card">
          <Link to ="/OneCard">
           <h1>One Card Reading</h1>
-         <img src={"img/fool.jpg"} alt="Three Card Reading" className="cardimage"/>
+         <img src={"img/fool.jpg"} alt="One Card Reading" className="cardimage"/>
          </Link>
          <p>Just a one card summary reading.</p>
          </div> 
@@ -33,7 +33,7 @@ function StartPage(){
         <div className="card">
         <Link to ="/TodaysCard">
         <h1>Todays Card</h1>
-        <img src={"img/high_priestess.jpg"} alt="Three Card Reading" className="cardimage"/>
+        <img src={"img/high_priestess.jpg"} alt="Todays Card" className="cardimage"/>
         </Link>
         <p>Your card of the day according to numerology.</p>
         </div> 
