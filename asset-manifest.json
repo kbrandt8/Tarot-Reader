@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Tarot-Reader/static/css/main.6e0451f8.chunk.css",
-    "main.js": "/Tarot-Reader/static/js/main.dbf7a7d3.chunk.js",
-    "main.js.map": "/Tarot-Reader/static/js/main.dbf7a7d3.chunk.js.map",
+    "main.js": "/Tarot-Reader/static/js/main.237fcfdb.chunk.js",
+    "main.js.map": "/Tarot-Reader/static/js/main.237fcfdb.chunk.js.map",
     "runtime-main.js": "/Tarot-Reader/static/js/runtime-main.29aacac0.js",
     "runtime-main.js.map": "/Tarot-Reader/static/js/runtime-main.29aacac0.js.map",
     "static/css/2.085759f1.chunk.css": "/Tarot-Reader/static/css/2.085759f1.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.085759f1.chunk.css",
     "static/js/2.c4be971f.chunk.js",
     "static/css/main.6e0451f8.chunk.css",
-    "static/js/main.dbf7a7d3.chunk.js"
+    "static/js/main.237fcfdb.chunk.js"
   ]
 }
