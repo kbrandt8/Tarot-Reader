@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Tarot-Reader/static/css/main.cc7eccd6.chunk.css",
+    "main.js": "/Tarot-Reader/static/js/main.a312c778.chunk.js",
+    "main.js.map": "/Tarot-Reader/static/js/main.a312c778.chunk.js.map",
+    "runtime-main.js": "/Tarot-Reader/static/js/runtime-main.29aacac0.js",
+    "runtime-main.js.map": "/Tarot-Reader/static/js/runtime-main.29aacac0.js.map",
+    "static/css/2.ecdd39c8.chunk.css": "/Tarot-Reader/static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.c4be971f.chunk.js": "/Tarot-Reader/static/js/2.c4be971f.chunk.js",
+    "static/js/2.c4be971f.chunk.js.map": "/Tarot-Reader/static/js/2.c4be971f.chunk.js.map",
+    "static/js/3.75fb0fe6.chunk.js": "/Tarot-Reader/static/js/3.75fb0fe6.chunk.js",
+    "static/js/3.75fb0fe6.chunk.js.map": "/Tarot-Reader/static/js/3.75fb0fe6.chunk.js.map",
+    "index.html": "/Tarot-Reader/index.html",
+    "static/css/2.ecdd39c8.chunk.css.map": "/Tarot-Reader/static/css/2.ecdd39c8.chunk.css.map",
+    "static/css/main.cc7eccd6.chunk.css.map": "/Tarot-Reader/static/css/main.cc7eccd6.chunk.css.map",
+    "static/js/2.c4be971f.chunk.js.LICENSE.txt": "/Tarot-Reader/static/js/2.c4be971f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.29aacac0.js",
+    "static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.c4be971f.chunk.js",
+    "static/css/main.cc7eccd6.chunk.css",
+    "static/js/main.a312c778.chunk.js"
+  ]
+}
