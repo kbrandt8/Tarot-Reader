@@ -6,7 +6,7 @@ function StartPage(){
     useEffect(()=>{ 
          document.title="Tarot Reader"
               },[]) 
-    return(<div>
+    return(<main>
 
   <header>What kind of reading are you looking for today?</header>
     <div className="cardcontainer">
@@ -38,7 +38,7 @@ function StartPage(){
         <p>Your card of the day according to numerology.</p>
         </div> 
     </div>
-</div>
+</main>
     )
 }
 export default StartPage

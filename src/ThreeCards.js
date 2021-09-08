@@ -18,7 +18,7 @@ const showCards = drawnCards.map(item => (
     ))
 
 return(
-  <div>
+  <main>
 
     <Nav/>
     {drawnCards.length === 0 ? <header>Ready for your reading?</header>:""}
@@ -33,7 +33,7 @@ return(
     {showCards}
     </div>
 
-</div>
+</main>
 
         
     )

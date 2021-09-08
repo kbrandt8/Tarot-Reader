@@ -19,7 +19,7 @@ const showCards = drawnCards.map(item => (
         <div>
 
         <Nav/>
-        {drawnCards.length === 0 ? <h3>Ready for your reading?</h3>:""}
+        {drawnCards.length === 0 ? <header>Ready for your reading?</header>:""}
         <div  className="buttoncontainer">
         {drawnCards.length > 0 ?<button onClick={()=>startOver()}>Draw a new card.</button> : ""}
     

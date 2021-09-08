@@ -34,25 +34,33 @@ const showCards = drawnCards.map(item => (
 
         </div>}
     
+
+
            {drawnCards.length < 1 &&
            <div>
               <header>Ready for your reading?
-              {startDate ?
-              
-              <h1 className="calendar">{startDate.getMonth()+1}/{startDate.getDate()}/{ startDate.getFullYear()}</h1> : <h1> Tell us your birthday!</h1> }
+               <h1> Tell us your birthday!</h1> 
 
               </header>
-              
+
+
                
-
             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}  className="date"/> 
-            
-
           
-            <button onClick={()=>getCard(startDate)}>Draw Your Card for today!</button>
-            <button onClick={()=>findCard(startDate)}>Just Birthday card!</button>
+          <header>
+            <button onClick={()=>getCard(startDate)}>Card of the Day</button>
+            <h1>We add your birthday to todays date with numerology to calculate your card of the day!</h1>
             
-        </div> }        
+            </header>
+            <header>
+            <button onClick={()=>findCard(startDate)}>Birthday Card</button>
+            <h1>We just add your birthday up with numerology to calculate your birthday card!</h1>
+            </header>
+            </div>
+        
+        
+        
+         }        
         
         </div>
        
