@@ -4,7 +4,7 @@ const theCards = [
  { id: "2",url:"img/high_priestess.jpg", name: "The High Priestess",upright:"Intuition",reversed:"Secrets",reverse:null,when:null},
  { id: "3",url:"img/empress.jpg", name:"The Empress",upright:"Abundance, Femininity",reversed:"Creative Block",reverse:null,when:null},
  { id: "4",url:"img/emperor.jpg", name:"The Emporer",upright:"Authority figure",reversed:"Overcontrolling nature",reverse:null,when:null},
- { id: "5",url:"img/Hierophant.jpg", name:"The Hierophant",upright:"Tradition",reversed:"Freedom",reverse:null,when:null},
+ { id: "5",url:"img/hierophant.jpg", name:"The Hierophant",upright:"Tradition",reversed:"Freedom",reverse:null,when:null},
  { id: "6",url:"img/lovers.jpg", name:"The Lovers",upright:"Alignment of Values",reversed:"Imbalance",reverse:null,when:null},
  { id: "7",url:"img/chariot.jpg", name:"The Chariot",upright:"Action, willpower",reversed:"Lack of direction",reverse:null,when:null},
  { id: "8",url:"img/strength.jpg", name:"Strength",upright:"Courage",reversed:"Self-doubt",reverse:null,when:null},
