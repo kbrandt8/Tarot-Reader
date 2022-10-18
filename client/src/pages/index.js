@@ -5,6 +5,7 @@ import ThreeCards from "./ThreeCards";
 import TodaysCard from "./TodaysCard";
 import Register from "./Register"
 import Dashboard from "./Dashboard";
+import Account from "./Account";
 
 
 
@@ -15,5 +16,6 @@ ThreeCards,
 TodaysCard,
 Login,
 Register,
-Dashboard
+Dashboard,
+Account
 }

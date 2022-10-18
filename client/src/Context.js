@@ -5,8 +5,6 @@ import Card from "./components/Card"
 const Context = React.createContext()
 
 function ContextProvider({ children }) {
-  let test = "test"
-
   const [deck, setDeck] = useState([])
   const [userInfo, setUserInfo] = useState({})
   const [event, setEvent] = useState("")
@@ -22,6 +20,12 @@ function ContextProvider({ children }) {
 
   const url = "http://localhost:7000/"
 
+  useEffect(()=>{
+
+setTimeout(()=>{
+  setEvent('')
+},1000)
+  },[event])
 
   // User Data & login / logout functionality
 
@@ -34,6 +38,7 @@ function ContextProvider({ children }) {
       res => {
         if (res.data.user) {
           localStorage.setItem('token', res.data.user)
+          setEvent('logged')
 
         } else {
           setEvent('user & password don\'t match')
@@ -59,10 +64,80 @@ function ContextProvider({ children }) {
     localStorage.clear()
     setIsLoggedIn(false)
   }
+
+  async function changeEmail(e) {
+ e.preventDefault()
+    Axios({
+      method: 'post',
+      url: url + "changeEmail",
+      headers: { 'x-access-token': token },
+      data: {
+        email: e.target.email.value,
+        password: e.target.password.value
+      }
+    }).then(
+      res => {
+        if (res.data.user) {
+          localStorage.setItem('token', res.data.user)
+          setEvent('Updated Email!')
+
+        } else {
+          setEvent('password is not valid')
+        }
+      }
+    )
+
+  }
+  async function changePassword(e) {
+    e.preventDefault()
+       Axios({
+         method: 'post',
+         url: url + "changePassword",
+         headers: { 'x-access-token': token },
+         data: {
+          currentPassword:e.target.currentPassword.value,
+           newPassword: e.target.newPassword.value
+         }
+       }).then(
+         res => {
+           if (res.data.user) {
+             localStorage.setItem('token', res.data.user)
+             setEvent('Updated Password!')
+   
+           } else {
+             setEvent('password is not valid')
+           }
+         }
+       )
+   
+     }
+     async function changeName(e) {
+      e.preventDefault()
+         Axios({
+           method: 'post',
+           url: url + "changeName",
+           headers: { 'x-access-token': token },
+           data: {
+             name: e.target.name.value
+           }
+         }).then(
+           res => {
+             if (res.data.user) {
+               localStorage.setItem('token', res.data.user)
+               setEvent('Updated Name!')
+     
+             } else {
+               setEvent('error')
+             }
+           }
+         )
+     
+       }
+  
   
   // User Info 
 
-  function getUserInfo() {
+ async function getUserInfo() {
     Axios.get(url + 'userinfo',
       {
         headers: {
@@ -173,13 +248,13 @@ function ContextProvider({ children }) {
       .catch(err => console.log(err))
   }
 
-  async function deleteReading(event) {
+  async function deleteReading(id) {
     Axios({
       method: 'post',
       url: url + 'deleteReading',
       headers: { 'x-access-token': token },
       data: {
-        id: event,
+        id
       }
     }).then(
       res => console.log(res)
@@ -203,7 +278,10 @@ function ContextProvider({ children }) {
       deleteReading,
       theReadings,
       loginUser,
-      registerUser
+      registerUser,
+      changeEmail,
+      changePassword,
+      changeName
     }}>
       {children}
     </Context.Provider>

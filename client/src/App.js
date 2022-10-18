@@ -7,8 +7,10 @@ import {
   TodaysCard,
   Login,
   Register,
-  Dashboard
+  Dashboard,
+  Account
 } from './pages'
+
 import Nav from './Nav';
 import Footer from './Footer';
 function App() {
@@ -30,6 +32,7 @@ function App() {
 
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Dashboard" element={<Dashboard/>}/>
+          <Route path="/Account" element={<Account/>}/>
 
         </Routes>
 

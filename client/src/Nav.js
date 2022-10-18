@@ -15,6 +15,7 @@ function Nav() {
                 <li> <NavLink reloadDocument activeClassName="active"  to="/TodaysCard">Todays Card</NavLink></li>
                 <li> {isLoggedIn ? <NavLink activeClassName="active"  to="/dashboard">Dashboard</NavLink>
                     : <NavLink activeClassName="active"  to="/Login">Login</NavLink>}</li>
+                    {isLoggedIn && <li><NavLink activeClassName="active"  to="/account">Account</NavLink></li>}
             </ul>
 
 

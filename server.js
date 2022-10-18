@@ -7,7 +7,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import { Card, Readings, User} from "./models/index.js"
+import { Card, Readings, User } from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
 
 dotenv.config()
@@ -20,81 +20,149 @@ mongoose.connect(process.env.MONGO_URL)
 
 const port = process.env.PORT || 7000
 
-app.post('/register', async (req,res)=>{
+app.post('/register', async (req, res) => {
     try {
-        const newPassword = await bcrypt.hash(req.body.password,10)
+        const newPassword = await bcrypt.hash(req.body.password, 10)
         const newUser = new User({
-            name:req.body.name,
-            email:req.body.email,
-            password:newPassword
+            name: req.body.name,
+            email: req.body.email,
+            password: newPassword
         })
         await newUser.save()
-        res.json({status:'ok'})
+        res.json({ status: 'ok' })
     } catch (err) {
-        res.json({status: 'error'})
+        res.json({ status: 'error' })
         console.log(err)
-        
+
     }
 })
 
-app.post('/login', async (req,res)=>{
+app.post('/login', async (req, res) => {
     try {
         const logUser = await User.findOne({
-            email:req.body.email
+            email: req.body.email
         })
         const isPasswordValid = await bcrypt.compare(
             req.body.password,
             logUser.password
         )
-        if(isPasswordValid){
+        if (isPasswordValid) {
             const token = jwt.sign({
-                name:logUser.name,
-                email:logUser.email
-            },'token')
-            return res.json({status:'ok',user:token})
+                name: logUser.name,
+                email: logUser.email,
+            }, 'token')
+            return res.json({ status: 'ok', user: token })
         }
     } catch (err) {
-        return res.json({status:'error',user:false})
+        return res.json({ status: 'error', user: false })
+    }
+})
+app.post('/changeEmail', async (req, res) => {
+    const token = req.headers['x-access-token']
+    const newEmail = req.body.email
+            const decoded = jwt.verify(token, 'token')
+        const email = decoded.email
+        const logUser = await User.findOne({
+            email:email
+        })
+    try {
+      const isPasswordValid = await bcrypt.compare(
+            req.body.password,
+            logUser.password
+        )
+        if (isPasswordValid) {
+         await User.findOneAndUpdate(
+            {email: email},{email: newEmail}
+         )
+            const token = jwt.sign({
+                email:newEmail
+            }, 'token')
+
+            return res.json({ status: 'ok', user: token })
+        }
+
+    } catch (err) {
+        console.log(err)
+    }
+})
+app.post('/changePassword', async (req, res) => {
+    const token = req.headers['x-access-token']
+    const newPassword = await bcrypt.hash(req.body.newPassword, 10)
+        const decoded = jwt.verify(token, 'token')
+        const email = decoded.email
+        const logUser = await User.findOne({
+            email:email
+        })
+    try {
+      const isPasswordValid = await bcrypt.compare(
+            req.body.currentPassword,
+            logUser.password
+        )
+        if (isPasswordValid) {
+         await User.findOneAndUpdate(
+            {email: email},{password:newPassword}
+         )
+            return res.json({ status: 'ok', user: token })
+        }
+
+    } catch (err) {
+        console.log(err)
+    }
+})
+app.post('/changeName', async (req, res) => {
+    const token = req.headers['x-access-token']
+        const decoded = jwt.verify(token, 'token')
+        const email = decoded.email
+    try {
+         await User.findOneAndUpdate(
+            {email: email},{name:req.body.name}
+         )
+        return res.json({ status: 'ok', user: token })
+
+    } catch (err) {
+        console.log(err)
     }
 })
 
-app.get('/userinfo', async (req,res)=>{
+app.get('/userinfo', async (req, res) => {
     const token = req.headers['x-access-token']
-try {
-    const decoded = jwt.verify(token,'token')
-    const email = decoded.email
-    const user = await User.findOne({email:email})
-    return res.json({
-        status:'ok',
-        name:user.name,
-        birthCard:user.birthCard,
-        email:user.email,
-        readings:user.readings
-})
-} catch (err) {
-    res.json({ status: 'error', error: 'invalid token' })
-}
+    try {
+        const decoded = jwt.verify(token, 'token')
+        const email = decoded.email
+        const user = await User.findOne({ email: email })
+        return res.json({
+            status: 'ok',
+            name: user.name,
+            birthCard: user.birthCard,
+            email: user.email,
+            readings: user.readings
+        })
+    } catch (err) {
+        res.json({ status: 'error', error: 'invalid token' })
+    }
 
 })
 
 
-app.post('/addReading', async (req,res)=>{
+app.post('/addReading', async (req, res) => {
     const token = req.headers['x-access-token']
     try {
         const decoded = jwt.verify(token, 'token')
         const email = decoded.email
 
         await User.updateOne(
-         {email:email }, 
-         { $push: {readings:{
-         title:req.body.title,
-         date:req.body.date,
-         cards:req.body.cards,
-         notes:req.body.notes
-        }
-        }}
+            { email: email },
+            {
+                $push: {
+                    readings: {
+                        title: req.body.title,
+                        date: req.body.date,
+                        cards: req.body.cards,
+                        notes: req.body.notes
+                    }
+                }
+            }
         )
- console.log(req.body.title)
         return res.json({ status: 'ok' })
     } catch (error) {
         console.log(error)
@@ -103,68 +171,68 @@ app.post('/addReading', async (req,res)=>{
 
 })
 
-app.post('/deleteReading', async (req,res)=>{
+app.post('/deleteReading', async (req, res) => {
     const token = req.headers['x-access-token']
     try {
-        const decoded = jwt.verify(token,'token')
+        const decoded = jwt.verify(token, 'token')
         const email = decoded.email
         await User.updateOne(
-         {email:email }, 
-         { $pull: { readings:{_id: req.body.id }} })
+            { email: email },
+            { $pull: { readings: { _id: req.body.id } } })
     } catch (err) {
         console.log(err)
-        res.json({status:'error',error: 'invalid token'})
+        res.json({ status: 'error', error: 'invalid token' })
     }
 })
 
-app.post('/tarot', async(req,res)=>{
-Card.insertMany(tarotDoc2)
-.then(function(docs){
-    res.json(docs)
-}).catch(function (err){
-    res.status(500).send(err)
-})
-})
-
-app.get("/oneCard",(req,res)=>{
-   Card.aggregate(
-    [{$sample: {size:1}}]
-   ,(err,result)=>{
-if(err){
-    res.json(err)
-}else{res.json(result)}
-   })
+app.post('/tarot', async (req, res) => {
+    Card.insertMany(tarotDoc2)
+        .then(function (docs) {
+            res.json(docs)
+        }).catch(function (err) {
+            res.status(500).send(err)
+        })
 })
 
-app.get("/threeCards",(req,res)=>{
+app.get("/oneCard", (req, res) => {
     Card.aggregate(
-     [{$sample: {size:3}}]
-    ,(err,result)=>{
- if(err){
-     res.json(err)
- }else{res.json(result)}
-    })
- })
+        [{ $sample: { size: 1 } }]
+        , (err, result) => {
+            if (err) {
+                res.json(err)
+            } else { res.json(result) }
+        })
+})
 
- app.get("/oneCard",(req,res)=>{
+app.get("/threeCards", (req, res) => {
     Card.aggregate(
-     [{$sample: {size:1}}]
-    ,(err,result)=>{
- if(err){
-     res.json(err)
- }else{res.json(result)}
-    })
- })
+        [{ $sample: { size: 3 } }]
+        , (err, result) => {
+            if (err) {
+                res.json(err)
+            } else { res.json(result) }
+        })
+})
+
+app.get("/oneCard", (req, res) => {
+    Card.aggregate(
+        [{ $sample: { size: 1 } }]
+        , (err, result) => {
+            if (err) {
+                res.json(err)
+            } else { res.json(result) }
+        })
+})
 
 
- app.get("/birthCard",(req,res)=>{
+app.get("/birthCard", (req, res) => {
     const num = parseInt(req.headers['num'])
     Card.find({
-    num:num
-    },(err,result)=>{
-        if(err){
+        num: num
+    }, (err, result) => {
+        if (err) {
             res.json(err)
-        }else{
+        } else {
             res.json(result)
         }
     })
