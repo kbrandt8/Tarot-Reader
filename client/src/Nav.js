@@ -10,8 +10,8 @@ function Nav() {
  
           </h1></NavLink>
             <ul>
-                <li> <NavLink reloadDocument activeClassName="active"  to="/ThreeCards">Three Card Reading</NavLink></li>
-                <li> <NavLink reloadDocument activeClassName="active"  to="/OneCard">One Card Reading</NavLink></li>
+                <li> <NavLink reloadDocument activeClassName="active"  to="/ThreeCardReading">Three Card Reading</NavLink></li>
+                <li> <NavLink reloadDocument activeClassName="active"  to="/OneCardReading">One Card Reading</NavLink></li>
                 <li> <NavLink reloadDocument activeClassName="active"  to="/TodaysCard">Todays Card</NavLink></li>
                 <li> {isLoggedIn ? <NavLink activeClassName="active"  to="/dashboard">Dashboard</NavLink>
                     : <NavLink activeClassName="active"  to="/Login">Login</NavLink>}</li>

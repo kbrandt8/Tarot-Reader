@@ -22,9 +22,9 @@ function App() {
         <Routes>
           <Route  path="/" element={<Start />} />
 
-          <Route path="/ThreeCards" element={<ThreeCards />} />
+          <Route path="/ThreeCardReading" element={<ThreeCards />} />
 
-          <Route path="/OneCard" element={<OneCard />} />
+          <Route path="/OneCardReading" element={<OneCard />} />
 
           <Route path="/TodaysCard" element={<TodaysCard />} />
           
