@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import { Card, Readings, User } from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
+import path from 'path'
 
 dotenv.config()
 app.use(express.json())
