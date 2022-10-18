@@ -17,7 +17,7 @@ function Start() {
 <h1>Welcome to Tarot-Reader!</h1>
       <h1>What kind of reading are you looking for today?</h1>
       <div className="Deck">
-        <Link to="/OneCard">
+        <Link to="/OneCardReading">
           <div className="cards">
             <h1>One Card Reading</h1>
             <img src={"img/fool.jpg"} alt="One Card Reading" className="cardimage" />
@@ -25,7 +25,7 @@ function Start() {
           </div>
         </Link>
 
-        <Link to="/ThreeCards">
+        <Link to="/ThreeCardReading">
           <div className="cards">
             <h1>Three Card Reading</h1>
             <img src={"img/magician.jpg"} alt="Three Card Reading" className="cardimage" />
