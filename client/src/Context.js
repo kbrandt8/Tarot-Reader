@@ -18,7 +18,6 @@ function ContextProvider({ children }) {
     <Card key={item.id} item={item} />
   )
 
-  const url = "http://localhost:7000/"
 
   useEffect(()=>{
 
@@ -31,7 +30,7 @@ setTimeout(()=>{
 
   async function loginUser(e) {
     e.preventDefault()
-    Axios.post(url + "login", {
+    Axios.post("/login", {
       email: e.target.email.value,
       password: e.target.password.value
     }).then(
@@ -50,7 +49,7 @@ setTimeout(()=>{
 
   async function registerUser(e) {
     event.preventDefault()
-    Axios.post(url + "register", {
+    Axios.post("/register", {
       name: e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value
@@ -69,7 +68,7 @@ setTimeout(()=>{
  e.preventDefault()
     Axios({
       method: 'post',
-      url: url + "changeEmail",
+      url: "/changeEmail",
       headers: { 'x-access-token': token },
       data: {
         email: e.target.email.value,
@@ -92,7 +91,7 @@ setTimeout(()=>{
     e.preventDefault()
        Axios({
          method: 'post',
-         url: url + "changePassword",
+         url: "/changePassword",
          headers: { 'x-access-token': token },
          data: {
           currentPassword:e.target.currentPassword.value,
@@ -115,7 +114,7 @@ setTimeout(()=>{
       e.preventDefault()
          Axios({
            method: 'post',
-           url: url + "changeName",
+           url: "/changeName",
            headers: { 'x-access-token': token },
            data: {
              name: e.target.name.value
@@ -138,7 +137,7 @@ setTimeout(()=>{
   // User Info 
 
  async function getUserInfo() {
-    Axios.get(url + 'userinfo',
+    Axios.get("/userinfo",
       {
         headers: {
           'x-access-token': token
@@ -166,10 +165,10 @@ setTimeout(()=>{
   async function getCards(type, config) {
     setType(type)
     if (config) {
-      Axios.get(url + type, config)
+      Axios.get("/" + type, config)
         .then(res => { setDeck(res.data) })
     } else {
-      Axios.get(url + type)
+      Axios.get("/" + type)
         .then(res => setDeck(res.data))
 
     }
@@ -235,7 +234,7 @@ setTimeout(()=>{
   async function saveReading(title, notes) {
     Axios({
       method: 'post',
-      url: url + "addReading",
+      url: "/addReading",
       headers: { 'x-access-token': token },
       data: {
         title,
@@ -251,7 +250,7 @@ setTimeout(()=>{
   async function deleteReading(id) {
     Axios({
       method: 'post',
-      url: url + 'deleteReading',
+      url: "/deleteReading",
       headers: { 'x-access-token': token },
       data: {
         id
