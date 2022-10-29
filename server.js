@@ -7,7 +7,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import { Card, Readings, User } from "./models/index.js"
+import { Card,Card2, Readings, User } from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
 import path from 'path'
 
@@ -195,6 +195,15 @@ app.post('/tarot', async (req, res) => {
         })
 })
 
+app.post('/tarot2', async (req, res) => {
+    Card2.insertMany(tarotDoc2)
+        .then(function (docs) {
+            res.json(docs)
+        }).catch(function (err) {
+            res.status(500).send(err)
+        })
+})
+
 app.get("/oneCard", (req, res) => {
     Card.aggregate(
         [{ $sample: { size: 1 } }]
@@ -202,6 +211,17 @@ app.get("/oneCard", (req, res) => {
             if (err) {
                 res.json(err)
             } else { res.json(result) }
+        })
+})
+app.get("/oneCard2", (req, res) => {
+    Card.aggregate(
+        [{ $sample: { size: 1 } }]
+        , (err, result) => {
+            if (err) {
+                res.json(err)
+            } else {
+                result.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
+                res.json(result) }
         })
 })
 
@@ -212,6 +232,17 @@ app.get("/threeCards", (req, res) => {
             if (err) {
                 res.json(err)
             } else { res.json(result) }
+        })
+})
+app.get("/threeCards2", (req, res) => {
+    Card.aggregate(
+        [{ $sample: { size: 3 } }]
+        , (err, result) => {
+            if (err) {
+                res.json(err)
+            } else {
+                result.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
+                res.json(result) }
         })
 })
 
