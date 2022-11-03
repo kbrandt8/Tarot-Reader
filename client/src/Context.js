@@ -48,17 +48,24 @@ setTimeout(()=>{
   }
 
   async function registerUser(e) {
-    event.preventDefault()
+    e.preventDefault()
     Axios.post("/register", {
-      name: e.target.name.value,
+      name:e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value
-    }).then(res => {
-      if (res.data.status === 'ok') {
+    }).then(
+      res => {
+        if (res.data.user) {
+          localStorage.setItem('token', res.data.user)
+          setEvent('logged')
 
+        } else {
+          setEvent('user & password don\'t match')
+        }
       }
-    })
+    )
   }
+
   function logOut() {
     localStorage.clear()
     setIsLoggedIn(false)
