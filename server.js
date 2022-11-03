@@ -29,8 +29,12 @@ app.post('/register', async (req, res) => {
             email: req.body.email,
             password: newPassword
         })
-        await newUser.save()
-        res.json({ status: 'ok' })
+       newUser.save()
+        const token = jwt.sign({
+            name: req.body.name,
+            email: req.body.email,
+        }, 'token')
+        return res.json({ status: 'ok', user: token })
     } catch (err) {
         res.json({ status: 'error' })
         console.log(err)
