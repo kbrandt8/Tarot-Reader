@@ -5,8 +5,13 @@ import {useNavigate} from 'react-router-dom'
 
 function Register() {
   const navigate = useNavigate()
-  const {registerUser} = useContext(Context)
-  
+  const {registerUser,userInfo} = useContext(Context)
+  useEffect(()=>{
+    userInfo.name &&
+    
+navigate('/dashboard')
+  },[userInfo])
+
   return (
     <div> 
       <h1> Register </h1>

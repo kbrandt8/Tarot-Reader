@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import Card from "../components/Card"
+import {Card,Meaning} from "../components"
 import { Context } from "../Context"
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -15,12 +15,40 @@ function Dashboard() {
     }
   }, [isLoggedIn])
 
-  const userReadings = theReadings.map(reading => <div key={reading._id}>
+  const userReadings = theReadings.map(reading => <div className="savedReadings" key={reading._id}>
     <h3>{reading.title}</h3>
     <h5>{reading.date}</h5>
-    <div className="Deck">
+{    reading.cards.length > 4 ? 
+<>
+    <div className="celticCross">
+  <div className="showCardsCeltic1">
+
+      {reading.cards.slice(0,6).map(card =>
+      <div className="celticCards"> 
+         <Card key={card._id} item={card} />
+         </div>
+         )}
+      </div>
+      <div className="showCardsCeltic2">
+      {reading.cards.slice(6).map(card => <Card key={card._id} item={card} />)}
+      </div>
+  </div>
+      <div className="showMeanings showMeaningsCeltic">
+      {reading.cards.map(card => <Meaning key={card._id} item={card} />)}
+      </div>
+</>
+      :
+<>
+    <div className="showCards">
       {reading.cards.map(card => <Card key={card._id} item={card} />)}
     </div>
+    <div className="showMeanings">
+    {reading.cards.map(card => <Meaning key={card._id} item={card} />)}
+    </div>
+    </>
+    }
+ 
+
     {reading.notes &&  
       <div>
         <h3>Notes:</h3>
@@ -33,7 +61,6 @@ function Dashboard() {
   return (
     <div>
       <>
-      {theBirthCard && theBirthCard[0].name}
         <h1>Welcome,</h1>
         <h1>{userInfo.name}</h1>
         <p>Take a look at your saved readings:</p>

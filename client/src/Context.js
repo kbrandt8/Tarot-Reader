@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Axios from "axios"
-import Card from "./components/Card"
+import {Card,Meaning} from "./components"
 
 const Context = React.createContext()
 
@@ -14,10 +14,20 @@ function ContextProvider({ children }) {
 
   const token = localStorage.getItem('token')
 
-  const showDeck = deck.map(item =>
-    <Card key={item.id} item={item} />
+  const showCards = deck.map(item =>
+   <> 
+
+   <Card key={item.id} item={item} />
+
+
+   </>
   )
 
+  const showMeanings = deck.map(item =>
+
+   <Meaning key={item.id} item={item}   />
+
+  )
 
   useEffect(()=>{
 
@@ -48,17 +58,25 @@ setTimeout(()=>{
   }
 
   async function registerUser(e) {
-    event.preventDefault()
+    e.preventDefault()
     Axios.post("/register", {
-      name: e.target.name.value,
+      name:e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value
-    }).then(res => {
-      if (res.data.status === 'ok') {
+    }).then(
+      res => {
+        if (res.data.user) {
+          localStorage.setItem('token', res.data.user)
+          setEvent('logged')
 
+        } else {
+          setEvent('user & password don\'t match')
+        }
       }
-    })
+    )
   }
+
+
   function logOut() {
     localStorage.clear()
     setIsLoggedIn(false)
@@ -162,17 +180,43 @@ setTimeout(()=>{
 
   // Get Cards Functionality
 
-  async function getCards(type, config) {
-    setType(type)
-    if (config) {
-      Axios.get("/" + type, config)
-        .then(res => { setDeck(res.data) })
-    } else {
-      Axios.get("/" + type)
-        .then(res => setDeck(res.data))
+  // async function getCards(type, config) {
+  //   setType(type)
+  //   if (config) {
+  //     Axios.get("/" + type, config)
+  //       .then(res => { setDeck(res.data) })
+  //   } else {
+  //     Axios.get("/" + type)
+  //       .then(res => setDeck(res.data))
 
+  //   }
+  // }
+
+  async function getCards2(type,) {
+    setType(type)
+    let config = {
+      headers: {
+        type
+      }
     }
+      Axios.get("/getReading", config)
+        .then(res => { setDeck(res.data) })
   }
+  async function getCards(type,config) {
+    setType(type)
+    let config2 = {
+      headers: {
+        type
+      }
+    }
+    if(config){
+       Axios.get("/" + type, config)
+         .then(res => { setDeck(res.data) })
+    
+    }else{ Axios.get("/getReading", config2)
+        .then(res => { setDeck(res.data) })}
+  }
+
 
   async function birthCard(birth, today, love) {
     function add(date) {
@@ -196,32 +240,32 @@ setTimeout(()=>{
     getCards('birthCard', config)
   }
 
-  function threeCard() {
-    deck.forEach(card => {
-      if (deck.indexOf(card) === 0) {
-        card.when = "past"
-      } if (deck.indexOf(card) === 1) {
-        card.when = "present"
-      } if (deck.indexOf(card) === 2) {
-        card.when = "future"
-      }
-    }
+  // function threeCard() {
+  //   deck.forEach(card => {
+  //     if (deck.indexOf(card) === 0) {
+  //       card.when = "past"
+  //     } if (deck.indexOf(card) === 1) {
+  //       card.when = "present"
+  //     } if (deck.indexOf(card) === 2) {
+  //       card.when = "future"
+  //     }
+  //   }
 
-    )
-  }
+  //   )
+  // }
 
-  function reverse() {
-    deck.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
-  }
+  // function reverse() {
+  //   deck.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
+  // }
 
-  useEffect(() => {
-    if (type === 'threeCards') {
-      reverse()
-      threeCard()
-    } if (type === 'oneCard') {
-      reverse()
-    }
-  }, [deck])
+  // useEffect(() => {
+  //   if (type === 'threeCards') {
+  //     reverse()
+  //     threeCard()
+  //   } if (type === 'oneCard') {
+  //     reverse()
+  //   }
+  // }, [deck])
 
 
   // Save & Delete Readings1
@@ -265,10 +309,9 @@ setTimeout(()=>{
     <Context.Provider value={{
       getCards,
       deck,
-      showDeck,
+      showCards,
+      showMeanings,
       birthCard,
-      reverse,
-      threeCard,
       logOut,
       userInfo,
       isLoggedIn,

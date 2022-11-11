@@ -1,31 +1,33 @@
 import mongoose from 'mongoose'
 
 const CardSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
+    name: {
+        type: String,
+        required: true,
     },
-    url:{
-        type:String,
-        required:true,
+    url: {
+        type: String,
+        required: true,
     },
-    num:{
-        type:Number,
-        required:false
+    num: {
+        type: Number,
+        required: false
     },
-    upright:{
-        type:String,
-        required:true,
+    upright: {
+        type: String,
+        required: true,
     },
-    reversed:{
-        type:String,
-        required:true,
+    reversed: {
+        type: String,
+        required: true,
     },
-    isReversed:{
-        type:Boolean,
-        required:false,}
+    isReversed: {
+        type: Boolean,
+        required: false,
+    },
+    title:String
 
 })
 
-const Card = mongoose.model("cards",CardSchema)
-export default Card
+const Card = mongoose.model("cards", CardSchema)
+export { Card, CardSchema }

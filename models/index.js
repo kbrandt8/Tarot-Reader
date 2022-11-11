@@ -1,11 +1,19 @@
-import Card from "./cardModel.js";
+
 import Card2 from "./cardModel2.js";
-import {User,Readings} from "./userModel.js";
+import { oneCard, threeCard, fourCard, birthCard, Card } from "./readingModel.js";
+import { User, Reading } from "./userModel.js";
+
+
 
 export {
-    Card,
+
     Card2,
     User,
-    Readings,
+    Card,
+    Reading,
+    oneCard,
+    threeCard,
+    fourCard,
+    birthCard,
 
 }   

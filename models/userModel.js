@@ -1,11 +1,12 @@
 import mongoose from "mongoose"
-const ReadingSchema = new mongoose.Schema({
-    title: { type: String },
-    date: { type: String },
-    cards: { type: Array },
-    notes:{type:String}
-})
 
+
+const ReadingSchema = new mongoose.Schema({
+    title: Array,
+    date: String,
+    cards: Array,
+    notes: String,
+})
 const UserModel = new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
@@ -15,6 +16,6 @@ const UserModel = new mongoose.Schema({
 {collection:'users'})
 
 const User = mongoose.model('Users',UserModel)
-const Readings = mongoose.model('Readings', ReadingSchema)
+const Reading = mongoose.model('Readings', ReadingSchema)
 
-export {User,Readings}
+export {User,Reading}

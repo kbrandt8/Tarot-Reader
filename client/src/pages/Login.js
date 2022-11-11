@@ -10,8 +10,9 @@ function Login() {
 
   useEffect(()=>{
     userInfo.name &&
+
 navigate('/dashboard')
-  },[userInfo])
+  },[userInfo,loading])
 
   return (<>
     {loading ? 

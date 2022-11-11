@@ -8,7 +8,7 @@ import {useNavigate,Link} from 'react-router-dom'
 
 
 function TodaysCard() {
-  const { birthCard, card,deck, getCards, showDeck,setBirthCard,saveReading,isLoggedIn} = useContext(Context)
+  const { birthCard, card,deck,showCards,showMeanings, getCards, showDeck,setBirthCard,saveReading,isLoggedIn} = useContext(Context)
   const [show, setShow] = useState(false)
   const [isBirthCard,setIsBirthCard] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
@@ -90,8 +90,13 @@ function TodaysCard() {
       <div> 
         
      <button onClick={()=>{setShow(false)}}>Go Back?</button>  
-      <div className="Deck">
-{showDeck}</div>
+
+     <div className="showCards">
+      {showCards}
+      </div>
+      <div className="showMeanings">
+      {showMeanings}
+      </div>
 
 <button 
               onClick={() => setOpen(!open)}

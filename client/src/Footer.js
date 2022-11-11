@@ -1,16 +1,32 @@
 import React,{useContext} from 'react'
 import { Context } from './Context'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
 
 
 function Footer() {
   const {userInfo, isLoggedIn,logOut} = useContext(Context)
 
-  return (
-    <footer>
-      {isLoggedIn ? <>Logged in as {userInfo.name}<br/><br/><button onClick={logOut}>Log Out?</button> </>: "not logged in"}
+  return (    
+  
+  <Navbar>
+      <Container>
+        <Navbar.Brand >
+        {isLoggedIn ? <>Logged in as {userInfo.name} </>: "not logged in"}
 
-    </footer>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          
+          {isLoggedIn ? <Navbar.Text><button onClick={logOut}>Log Out</button></Navbar.Text> : 
+          <Navbar.Text as={NavLink} to="/login"><button >Log in</button></Navbar.Text>}
+          
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
   )
 }
 

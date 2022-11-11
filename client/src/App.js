@@ -8,25 +8,29 @@ import {
   Login,
   Register,
   Dashboard,
-  Account
+  Account,
+  FourCards,
+  CelticCross
 } from './pages'
 
-import Nav from './Nav';
+import Nav1 from './Nav';
 import Footer from './Footer';
 function App() {
   return (<div> 
     <BrowserRouter >
-      <Nav />
+      <Nav1 />
       <main>
 
         <Routes>
           <Route  path="/" element={<Start />} />
 
+          <Route path="/FourCardReading" element={<FourCards />} />
           <Route path="/ThreeCardReading" element={<ThreeCards />} />
 
           <Route path="/OneCardReading" element={<OneCard />} />
 
           <Route path="/TodaysCard" element={<TodaysCard />} />
+          <Route path="/CelticCrossReading" element={<CelticCross />} />
           
           <Route path="/Login" element={<Login />} />
 
@@ -37,8 +41,9 @@ function App() {
         </Routes>
 
       </main>
+       <Footer/>
     </BrowserRouter>
-   <Footer/>
+  
   </div>
   );
 }

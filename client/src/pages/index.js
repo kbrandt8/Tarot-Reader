@@ -6,6 +6,8 @@ import TodaysCard from "./TodaysCard";
 import Register from "./Register"
 import Dashboard from "./Dashboard";
 import Account from "./Account";
+import FourCards from "./FourCards";
+import CelticCross from "./CelticCross";
 
 
 
@@ -17,5 +19,7 @@ TodaysCard,
 Login,
 Register,
 Dashboard,
-Account
+Account,
+FourCards,
+CelticCross
 }

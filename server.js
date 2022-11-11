@@ -7,9 +7,10 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import { Card,Card2, Readings, User } from "./models/index.js"
+import { Card, Card2, Reading, User, oneCard, threeCard, fourCard, birthCard } from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
 import path from 'path'
+import { SlowBuffer } from "buffer"
 
 dotenv.config()
 app.use(express.json())
@@ -29,8 +30,12 @@ app.post('/register', async (req, res) => {
             email: req.body.email,
             password: newPassword
         })
-        await newUser.save()
-        res.json({ status: 'ok' })
+       newUser.save()
+        const token = jwt.sign({
+            name: req.body.name,
+            email: req.body.email,
+        }, 'token')
+        return res.json({ status: 'ok', user: token })
     } catch (err) {
         res.json({ status: 'error' })
         console.log(err)
@@ -61,22 +66,22 @@ app.post('/login', async (req, res) => {
 app.post('/changeEmail', async (req, res) => {
     const token = req.headers['x-access-token']
     const newEmail = req.body.email
-            const decoded = jwt.verify(token, 'token')
-        const email = decoded.email
-        const logUser = await User.findOne({
-            email:email
-        })
+    const decoded = jwt.verify(token, 'token')
+    const email = decoded.email
+    const logUser = await User.findOne({
+        email: email
+    })
     try {
-      const isPasswordValid = await bcrypt.compare(
+        const isPasswordValid = await bcrypt.compare(
             req.body.password,
             logUser.password
         )
         if (isPasswordValid) {
-         await User.findOneAndUpdate(
-            {email: email},{email: newEmail}
-         )
+            await User.findOneAndUpdate(
+                { email: email }, { email: newEmail }
+            )
             const token = jwt.sign({
-                email:newEmail
+                email: newEmail
             }, 'token')
 
             return res.json({ status: 'ok', user: token })
@@ -89,20 +94,20 @@ app.post('/changeEmail', async (req, res) => {
 app.post('/changePassword', async (req, res) => {
     const token = req.headers['x-access-token']
     const newPassword = await bcrypt.hash(req.body.newPassword, 10)
-        const decoded = jwt.verify(token, 'token')
-        const email = decoded.email
-        const logUser = await User.findOne({
-            email:email
-        })
+    const decoded = jwt.verify(token, 'token')
+    const email = decoded.email
+    const logUser = await User.findOne({
+        email: email
+    })
     try {
-      const isPasswordValid = await bcrypt.compare(
+        const isPasswordValid = await bcrypt.compare(
             req.body.currentPassword,
             logUser.password
         )
         if (isPasswordValid) {
-         await User.findOneAndUpdate(
-            {email: email},{password:newPassword}
-         )
+            await User.findOneAndUpdate(
+                { email: email }, { password: newPassword }
+            )
             return res.json({ status: 'ok', user: token })
         }
 
@@ -112,12 +117,12 @@ app.post('/changePassword', async (req, res) => {
 })
 app.post('/changeName', async (req, res) => {
     const token = req.headers['x-access-token']
-        const decoded = jwt.verify(token, 'token')
-        const email = decoded.email
+    const decoded = jwt.verify(token, 'token')
+    const email = decoded.email
     try {
-         await User.findOneAndUpdate(
-            {email: email},{name:req.body.name}
-         )
+        await User.findOneAndUpdate(
+            { email: email }, { name: req.body.name }
+        )
         return res.json({ status: 'ok', user: token })
 
     } catch (err) {
@@ -204,55 +209,43 @@ app.post('/tarot2', async (req, res) => {
         })
 })
 
-app.get("/oneCard", (req, res) => {
+app.get("/getReading", (req, res) => {
+    const type = req.headers['type']
+    const one = ["One Card Reading"]
+    const three = ["Past", "Present", "Future"]
+    const four = ["Question", "Expectation", "Answer", "Why"]
+    const celtic = ["Question","Situation","Root","Past","Possibilities","Future","Querent","What Helps","What Hurts","Outcome"]
+    let num = 0
+    
+    let title = []
+
+    if (type === "oneCard") {
+        num = 1
+        title = one
+    } if (type === "threeCards") {
+        num = 3
+        title = three
+    } if (type === "fourCards") {
+        num = 4
+        title = four
+    } if (type ==="celticCross"){
+        num = 10
+        title = celtic
+    }
+
     Card.aggregate(
-        [{ $sample: { size: 1 } }]
-        , (err, result) => {
-            if (err) {
-                res.json(err)
-            } else { res.json(result) }
-        })
-})
-app.get("/oneCard2", (req, res) => {
-    Card.aggregate(
-        [{ $sample: { size: 1 } }]
+        [{ $sample: { size: num } }]
         , (err, result) => {
             if (err) {
                 res.json(err)
             } else {
-                result.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
-                res.json(result) }
-        })
-})
-
-app.get("/threeCards", (req, res) => {
-    Card.aggregate(
-        [{ $sample: { size: 3 } }]
-        , (err, result) => {
-            if (err) {
-                res.json(err)
-            } else { res.json(result) }
-        })
-})
-app.get("/threeCards2", (req, res) => {
-    Card.aggregate(
-        [{ $sample: { size: 3 } }]
-        , (err, result) => {
-            if (err) {
-                res.json(err)
-            } else {
-                result.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
-                res.json(result) }
-        })
-})
-
-app.get("/oneCard", (req, res) => {
-    Card.aggregate(
-        [{ $sample: { size: 1 } }]
-        , (err, result) => {
-            if (err) {
-                res.json(err)
-            } else { res.json(result) }
+               result.forEach(card=>
+                { 
+                    card.title = title[result.indexOf(card)];
+                    card.isReversed = Math.floor(Math.random() * 10) > 5 ? true : false;
+                })
+                res.json(result)
+            }
         })
 })
 

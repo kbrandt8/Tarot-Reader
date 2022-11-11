@@ -5,8 +5,8 @@ import {useNavigate,Link} from 'react-router-dom'
 
 
 
-function ThreeCards() {
-  const {getCards, showCards,showMeanings,saveReading,isLoggedIn} = useContext(Context)
+function FourCards() {
+  const {getCards,showCards,showMeanings,saveReading,isLoggedIn} = useContext(Context)
   const [show,setShow] = useState(false)
   const [loading,setLoading] = useState(false)
   const [title,setTitle] = useState("")
@@ -17,7 +17,7 @@ function ThreeCards() {
 
 
 async function card(){
-  getCards('threeCards')
+  getCards('fourCards')
   setLoading(true)
   setShow(false)
   setTimeout(()=>{
@@ -27,8 +27,8 @@ async function card(){
 }
 
       return (<><div className="Deck">
-        <p>{!show &&<>Three card reading: The past, present and future of your question/situation.<br/></>}
-      <button onClick={()=>card()}>{show ? "Draw Again?" : "Draw Three Cards"}</button></p>
+        <p>{!show &&<>Four card reading: ask a question<br/></>}
+      <button onClick={()=>card()}>{show ? "Draw Again?" : "Draw Four Cards"}</button></p>
       </div>
 
       {loading &&<>
@@ -39,15 +39,12 @@ async function card(){
 
 
 {show && <div>
-      <div >
-        <div className="showCards">
+  <div className="showCards">
       {showCards}
       </div>
       <div className="showMeanings">
       {showMeanings}
       </div>
-      </div>
-
       <button 
               onClick={() => setOpen(!open)}
               aria-controls="collapse-text"
@@ -90,4 +87,4 @@ async function card(){
       </>)
     }
 
-export default ThreeCards
+export default FourCards

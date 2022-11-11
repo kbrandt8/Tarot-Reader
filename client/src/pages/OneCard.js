@@ -3,7 +3,7 @@ import { Context } from "../Context"
 import {useNavigate,Link} from 'react-router-dom'
 import Collapse from 'react-bootstrap/Collapse'
 function OneCard() {
-  const {getCards,showDeck,saveReading,isLoggedIn} = useContext(Context)
+  const {getCards, showCards,showMeanings,saveReading,isLoggedIn} = useContext(Context)
   const [show,setShow] = useState(false)
   const [loading,setLoading] = useState(false)
   const [title,setTitle] = useState("")
@@ -48,8 +48,12 @@ setShow(false)
 
 {show && <>
       <div>
-      <div className="Deck">
-      {showDeck}</div>
+      <div className="showCards">
+      {showCards}
+      </div>
+      <div className="showMeanings">
+      {showMeanings}
+      </div>
 
 
       <button 
