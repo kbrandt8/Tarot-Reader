@@ -1,7 +1,6 @@
 import React,{useContext} from 'react'
 import { NavLink} from 'react-router-dom'
 import { Context } from "./Context"
-import { BsMoon } from "react-icons/bs";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';

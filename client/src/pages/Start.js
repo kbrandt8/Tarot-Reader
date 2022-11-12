@@ -3,7 +3,14 @@ import Card from "../components/Card"
 import { Context } from "../Context"
 import { useNavigate, Link } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel';
-import { BsMoon } from "react-icons/bs";
+import { CgCardHearts } from "react-icons/cg";
+
+// let card = <div className="celticCards"> <CgCardHearts/> </div>
+// let cards = card.push
+// const showCards = cards.map(card=>
+
+
+// )
 
 
 function Start() {
@@ -22,7 +29,9 @@ function Start() {
       <Link to="/OneCardReading">
 
 <h1>One Card Reading</h1>
-<h2><BsMoon/><BsMoon/><BsMoon/></h2>
+<div className="showCards"><CgCardHearts/></div>
+
+
 <p>Just a one card summary reading.</p>
 
 </Link>
@@ -35,7 +44,7 @@ function Start() {
       <Link to="/ThreeCardReading">
 
 <h1>Three Card Reading</h1>
-<h2><BsMoon/><BsMoon/><BsMoon/></h2>
+<div className="showCards"><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -45,7 +54,7 @@ function Start() {
       <Link to="/FourCardReading">
 
 <h1>Four Card Reading</h1>
-<h2><BsMoon/><BsMoon/><BsMoon/></h2>
+<div className="showCards"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -55,7 +64,17 @@ function Start() {
       <Link to="/CelticCrossReading">
 
 <h1>Celtic Cross Reading</h1>
-<h2><BsMoon/><BsMoon/><BsMoon/></h2>
+<div className="celticCross">
+<div className="showCardsCeltic1">
+<div className="celticCards2"> <CgCardHearts/> </div>
+<div className="celticCards2"> <CgCardHearts/> </div>
+<div className="celticCards2"> <CgCardHearts/> </div>
+<div className="celticCards2"> <CgCardHearts/> </div>
+<div className="celticCards2"> <CgCardHearts/> </div>
+<div className="celticCards2"> <CgCardHearts/> </div>
+</div>
+
+<div className="showCardsCeltic2"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -63,7 +82,7 @@ function Start() {
       <Carousel.Item>
       <Link to="/TodaysCard">
           <h1>Todays Card</h1>
-          <h2><BsMoon/><BsMoon/><BsMoon/></h2>
+   
         <p>Your card of the day according to numerology.</p>
 
        </Link>
@@ -71,46 +90,6 @@ function Start() {
 
     </Carousel>
 
-
-
-{/* 
-
-        <Link to="/OneCardReading">
-
-            <h1>One Card Reading</h1>
-
-            <p>Just a one card summary reading.</p>
-
-        </Link>
-
-        <Link to="/ThreeCardReading">
-
-            <h1>Three Card Reading</h1>
-
-            <p>"Past Present Future" reading.</p>
-
-        </Link>
-        <Link to="/FourCardReading">
-
-<h1>Four Card Reading</h1>
-<p>"Past Present Future" reading.</p>
-
-</Link>
-        <Link to="/CelticCrossReading">
-
-<h1>Celtic CrossReading</h1>
-<p>"Past Present Future" reading.</p>
-
-</Link>
-
-      
-        <Link to="/TodaysCard">
-          <h1>Todays Card</h1>
-        <p>Your card of the day according to numerology.</p>
-
-       </Link>
-
- */}
 
 
 

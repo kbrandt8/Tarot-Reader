@@ -18,7 +18,7 @@ nav,
 footer,
 button,
 input {
-  background-color: #eae2f0 !important;
+  background-color: #eae2f0 ;
 }
 
 /* Links */
@@ -112,6 +112,7 @@ p {
   opacity:1;
   z-index: 1;
 }
+
 
 /* Page Setup */
 
@@ -224,9 +225,6 @@ a .cards:hover {
   justify-content: space-evenly;
   width: 100%;
 }
-showCards2{
-  
-}
 
 
 
@@ -310,6 +308,45 @@ showCards2{
   top: 25rem;
   left: 40rem;
 }
+
+.celticCards2 {
+  overflow: visible;
+  position: absolute;
+}
+.celticCards2:nth-child(1) {
+ top:-3rem;
+  left:35rem;
+
+}
+
+.celticCards2:nth-child(2) {
+  transform: rotate(90deg);
+  top:-2.5rem;
+  left:35rem;
+
+}
+
+.celticCards2:nth-child(3) {
+  top:-1rem;
+  left:35rem;
+}
+
+.celticCards2:nth-child(4) {
+  top:-3rem;
+  left:33rem;
+
+}
+
+.celticCards2:nth-child(5) {
+  left: 35rem;
+  top:-5rem;
+}
+
+.celticCards2:nth-child(6) {
+  top: -3rem;
+  left: 37rem;
+}
+
 
 .showCardsCeltic2 {
   display: flex;
