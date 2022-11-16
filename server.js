@@ -129,6 +129,21 @@ app.post('/changeName', async (req, res) => {
         console.log(err)
     }
 })
+app.post('/addBirthDate', async (req, res) => {
+    const token = req.headers['x-access-token']
+    const decoded = jwt.verify(token, 'token')
+    const email = decoded.email
+    console.log(req.body.birthDate)
+    try {
+        await User.findOneAndUpdate(
+            { email: email }, { birthDate: req.body.birthDate }
+        )
+        return res.json({ status: 'ok', user: token })
+
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 app.get('/userinfo', async (req, res) => {
     const token = req.headers['x-access-token']
@@ -140,6 +155,7 @@ app.get('/userinfo', async (req, res) => {
             status: 'ok',
             name: user.name,
             birthCard: user.birthCard,
+            birthDate:user.birthDate,
             email: user.email,
             readings: user.readings
         })
@@ -263,6 +279,21 @@ app.get("/birthCard", (req, res) => {
     })
 })
 
+app.get("/getArcana",  (req, res) => {
+    const num1 = parseInt(req.headers['num1'])
+    const num2 = parseInt(req.headers['num2'])
+
+  Card.find({
+    num: [ num1, num2 ]
+    }, (err, result) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(result)
+        }
+    })
+
+})
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join('client/build')));

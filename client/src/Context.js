@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react"
 import Axios from "axios"
 import {Card,Meaning} from "./components"
+import Dashboard from "./pages/Dashboard"
 
 const Context = React.createContext()
 
 function ContextProvider({ children }) {
   const [deck, setDeck] = useState([])
+  const [todayCard,setTodayCard] = useState([])
   const [userInfo, setUserInfo] = useState({})
   const [event, setEvent] = useState("")
   const [type, setType] = useState("")
@@ -150,6 +152,28 @@ setTimeout(()=>{
          )
      
        }
+
+       async function changeBirthDate(e) {
+        e.preventDefault()
+           Axios({
+             method: 'post',
+             url: "/addBirthDate",
+             headers: { 'x-access-token': token },
+             data: {
+               birthDate: e.target.birthDate.value
+             }
+           }).then(
+             res => {
+               if (res.data.user) {
+                 localStorage.setItem('token', res.data.user)
+                 setEvent('Updated Birthday!')
+               } else {
+                 setEvent('error')
+               }
+             }
+           )
+       
+         }
   
   
   // User Info 
@@ -161,7 +185,8 @@ setTimeout(()=>{
           'x-access-token': token
         }
       })
-      .then(res => { setUserInfo(res.data); setTheReadings(res.data.readings) })
+  
+      .then(res => { setUserInfo(res.data);setTheReadings(res.data.readings) })
 
   }
 
@@ -169,6 +194,7 @@ setTimeout(()=>{
     if (token) {
       getUserInfo()
       setIsLoggedIn(true)
+   
     } else {
       setIsLoggedIn(false)
     }
@@ -239,6 +265,34 @@ setTimeout(()=>{
     }
     getCards('birthCard', config)
   }
+
+async function getBirthCard(birth,today,love){
+  function add(date) {
+    return date.getMonth() + 1 + date.getDate() + date.getFullYear()
+  }
+  function newArr(num) {
+    return num.toString().split('').map(Number)
+  }
+  const birthDay = add(birth)
+  const theDay = today ? add(today) : 0
+  const loveMatch = love ? add(love) : 0
+  const added = birthDay + theDay + loveMatch
+  let reduced = newArr(added).reduce((a, b) => a + b)
+  let result = reduced > 22 ? newArr(reduced).reduce((a, b) => a + b) : reduced
+  return result
+}
+async function birthCardDashboard(birth,today){
+const card1 = await getBirthCard(birth)
+const card2 = await getBirthCard(birth,today)
+console.log(card1,card2)
+Axios.get("/getArcana", {headers:{'num1': card1,'num2': card2}})
+.then(res => { setDeck(res.data)})
+
+
+}
+
+
+
 
   // function threeCard() {
   //   deck.forEach(card => {
@@ -323,7 +377,11 @@ setTimeout(()=>{
       registerUser,
       changeEmail,
       changePassword,
-      changeName
+      changeName,
+      changeBirthDate,
+      birthCardDashboard,
+      todayCard,
+  
     }}>
       {children}
     </Context.Provider>

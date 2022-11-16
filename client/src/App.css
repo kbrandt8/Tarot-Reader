@@ -18,7 +18,7 @@ nav,
 footer,
 button,
 input {
-  background-color: #eae2f0 ;
+  background-color: #eae2f0;
 }
 
 /* Links */
@@ -91,25 +91,26 @@ p {
   margin: 0;
 }
 
-.carousel{
-  width:100%;
+.carousel {
+  width: 100%;
   background-color: #eae2f0;
-  height:25rem;
+  height: 25rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
   overflow: hidden;
 }
 
-.carousel h1{
+.carousel h1 {
   font-size: 3.5rem;
-  margin-top:5rem;
-  opacity:1;
+  margin-top: 5rem;
+  opacity: 1;
   z-index: 1;
 }
-.carousel p{
+
+.carousel p {
   font-size: 2rem;
   text-transform: none;
-  opacity:1;
+  opacity: 1;
   z-index: 1;
 }
 
@@ -117,11 +118,13 @@ p {
 /* Page Setup */
 
 
-nav{
+nav {
   border: solid #000 1px;
 
 }
-.navbar-brand,.navbar-brand:hover{
+
+.navbar-brand,
+.navbar-brand:hover {
   font-size: 3rem;
   font-family: 'Tangerine-bold';
   padding: 0px;
@@ -130,21 +133,24 @@ nav{
   text-transform: none;
 }
 
-.nav-link{
-  font-size:1.2rem;
+.nav-link {
+  font-size: 1.2rem;
   font-family: 'Didact Gothic';
 }
-.dropdown-item{
- font-size: 1.2rem;
+
+.dropdown-item {
+  font-size: 1.2rem;
 }
-.dropdown-item:hover,.dropdown-item.active{
+
+.dropdown-item:hover,
+.dropdown-item.active {
   background-color: #eae2f0;
 }
 
 
 main {
   margin: 0 auto;
-  margin-top:10rem;
+  margin-top: 10rem;
   margin-bottom: 5rem;
   width: 90%;
   display: flex;
@@ -152,7 +158,7 @@ main {
   justify-content: center;
   border: #000 solid 1px;
   text-align: center;
-  min-height:20rem;
+  min-height: 20rem;
 }
 
 footer {
@@ -161,6 +167,14 @@ footer {
   border: #000 solid 1px;
   text-align: center;
   width: 100%;
+}
+
+.showCardsStart {
+  display: flex;
+  font-size: 3rem;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* Card css */
@@ -238,8 +252,8 @@ a .cards:hover {
 .showMeanings h1 {
   height: 3rem;
   justify-content: center;
-  border:1px dashed #440274;
-  background-color: rgba(90, 0, 150,0.1);
+  border: 1px dashed #440274;
+  background-color: rgba(90, 0, 150, 0.1);
 }
 
 .showMeanings h2 {
@@ -251,8 +265,8 @@ a .cards:hover {
 .showMeanings p {
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 1.5rem;
-  height:14rem;
-  width:14rem;
+  height: 14rem;
+  width: 14rem;
 }
 
 .savedReadings {
@@ -260,17 +274,31 @@ a .cards:hover {
   box-shadow: #000 5px 1px 10px;
   margin: 5rem;
 }
-.savedReadings .showMeanings{
+
+.savedReadings .showMeanings {
   flex-wrap: wrap;
 }
-.savedReadings .showCards{
+
+.savedReadings .showCards {
   flex-wrap: wrap;
+}
+
+.todaysCard{
+  display:flex;
+  flex-direction:column;
+  border:#000 5px double;
+  width:25%;
+  border-radius:50px;
+  padding:2rem;
+  margin:0 auto;
+  margin-top:3rem;
+  margin-bottom: 3rem;
 }
 
 .showCardsCeltic1 {
   width: 75%;
   position: relative;
-  top:5rem;
+  top: 5rem;
 }
 
 .celticCards {
@@ -301,52 +329,13 @@ a .cards:hover {
 
 .celticCards:nth-child(5) {
   left: 20rem;
-  top:5rem;
+  top: 5rem;
 }
 
 .celticCards:nth-child(6) {
   top: 25rem;
   left: 40rem;
 }
-
-.celticCards2 {
-  overflow: visible;
-  position: absolute;
-}
-.celticCards2:nth-child(1) {
- top:-3rem;
-  left:35rem;
-
-}
-
-.celticCards2:nth-child(2) {
-  transform: rotate(90deg);
-  top:-2.5rem;
-  left:35rem;
-
-}
-
-.celticCards2:nth-child(3) {
-  top:-1rem;
-  left:35rem;
-}
-
-.celticCards2:nth-child(4) {
-  top:-3rem;
-  left:33rem;
-
-}
-
-.celticCards2:nth-child(5) {
-  left: 35rem;
-  top:-5rem;
-}
-
-.celticCards2:nth-child(6) {
-  top: -3rem;
-  left: 37rem;
-}
-
 
 .showCardsCeltic2 {
   display: flex;
@@ -370,9 +359,6 @@ a .cards:hover {
 
 }
 
-/* .savedReadings:nth-child(even){
-
-} */
 
 
 /* Sectioning */
@@ -430,7 +416,7 @@ form>input {
   }
 
   main {
-    
+
     width: 100%;
   }
 
@@ -473,9 +459,34 @@ form>input {
     font-size: 1.5rem;
   }
 
-  .cards img{
+  .cards img {
     max-width: 11rem;
   }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name,
+  select,
+  .react-datepicker__header.react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header
+ {
+    font-size: 1.5rem!important;
+  }
+
+.react-datepicker__month-container {
+    float: left;
+    width:20rem;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    width: 2rem!important;
+    line-height: 1rem!important;
+
+}
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+    font-size: 1.5rem!important;
+}
+
 }
 
 
@@ -485,11 +496,12 @@ form>input {
     font-size: 7px;
   }
 
-  main{
-    width:100%;
-    min-height:50rem;
+  main {
+    width: 100%;
+    min-height: 50rem;
   }
-  .cards img{
+
+  .cards img {
     max-width: 11rem;
   }
 
@@ -517,7 +529,7 @@ form>input {
   nav {
     font-size: 2rem;
   }
- 
+
 
 }
 
@@ -525,7 +537,8 @@ form>input {
   html {
     font-size: 5px;
   }
-  .cards img{
+
+  .cards img {
     max-width: 10rem;
   }
 
@@ -536,6 +549,7 @@ form>input {
   h2 {
     font-size: 4rem;
   }
+
   .dropdown-item,
   .nav-link,
   a,
@@ -549,12 +563,15 @@ form>input {
   nav {
     font-size: 3.2rem;
   }
-
-.showCardsCeltic1 {
-  width: 75%;
-  position: relative;
-  top:0rem;
+.todaysCard{
+  width:35%;
 }
+  .showCardsCeltic1 {
+    width: 75%;
+    position: relative;
+    top: 0rem;
+  }
+
   .showMeanings h1 {
     font-size: 4rem;
     height: 5rem;
@@ -564,10 +581,36 @@ form>input {
     font-size: 3rem;
     height: 3.1rem;
   }
-  .showMeanings p{
+
+  .showMeanings p {
     margin: 0 auto;
-    width:20rem;
+    width: 20rem;
   }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name,
+  select,
+  .react-datepicker__header.react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header
+ {
+    font-size: 2.5rem!important;
+  }
+
+.react-datepicker__month-container {
+    float: left;
+    width:30rem;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    width: 3rem!important;
+    line-height: 2rem!important;
+
+}
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+    font-size: 3rem!important;
+}
 
 }
 
@@ -576,6 +619,7 @@ form>input {
 
   .dropdown-item,
   .nav-link,
+  .date,
   a,
   h3,
   h5,
@@ -584,8 +628,12 @@ form>input {
   button,
   footer,
   label,
-  nav {
-    font-size: 3rem;
+  nav ,
+  select{
+    font-size: 3rem!important;
+  }
+  .todaysCard{
+    width:50%;
   }
 
 

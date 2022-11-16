@@ -5,12 +5,6 @@ import { useNavigate, Link } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel';
 import { CgCardHearts } from "react-icons/cg";
 
-// let card = <div className="celticCards"> <CgCardHearts/> </div>
-// let cards = card.push
-// const showCards = cards.map(card=>
-
-
-// )
 
 
 function Start() {
@@ -19,17 +13,12 @@ function Start() {
 <h1>Welcome to Tarot-Reader!</h1>
       <h3>What kind of reading are you looking for today?</h3>
 
-
-
-      
-
-
     <Carousel variant="dark">
       <Carousel.Item>
       <Link to="/OneCardReading">
 
 <h1>One Card Reading</h1>
-<div className="showCards"><CgCardHearts/></div>
+<div className="showCardsStart"><CgCardHearts/></div>
 
 
 <p>Just a one card summary reading.</p>
@@ -44,7 +33,7 @@ function Start() {
       <Link to="/ThreeCardReading">
 
 <h1>Three Card Reading</h1>
-<div className="showCards"><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
+<div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -54,7 +43,7 @@ function Start() {
       <Link to="/FourCardReading">
 
 <h1>Four Card Reading</h1>
-<div className="showCards"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
+<div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -64,17 +53,9 @@ function Start() {
       <Link to="/CelticCrossReading">
 
 <h1>Celtic Cross Reading</h1>
-<div className="celticCross">
-<div className="showCardsCeltic1">
-<div className="celticCards2"> <CgCardHearts/> </div>
-<div className="celticCards2"> <CgCardHearts/> </div>
-<div className="celticCards2"> <CgCardHearts/> </div>
-<div className="celticCards2"> <CgCardHearts/> </div>
-<div className="celticCards2"> <CgCardHearts/> </div>
-<div className="celticCards2"> <CgCardHearts/> </div>
-</div>
 
-<div className="showCardsCeltic2"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div></div>
+<div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
+<div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <p>"Past Present Future" reading.</p>
 
 </Link>
@@ -82,7 +63,7 @@ function Start() {
       <Carousel.Item>
       <Link to="/TodaysCard">
           <h1>Todays Card</h1>
-   
+          <div className="showCardsStart"><CgCardHearts/></div>
         <p>Your card of the day according to numerology.</p>
 
        </Link>

@@ -9,6 +9,7 @@ const ReadingSchema = new mongoose.Schema({
 })
 const UserModel = new mongoose.Schema({
     name:{type:String,required:true},
+    birthDate:Date,
     email:{type:String,required:true},
     password:{type:String,required:true},
     readings:[ReadingSchema]
