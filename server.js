@@ -293,31 +293,31 @@ app.get("/getArcana",  (req, res) => {
     })
 
 })
-
-if (process.env.NODE_ENV === 'heroku') {
+{  
+    if (process.env.production=== 'heroku') {
     app.use(express.static(path.join('client/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
-
-if(process.env.production === 'vercel')
-{
- 
-    app.use(express.static(path.join(__dirname, "client/build")));
-
-app.get("*", function(_, res) {
-    res.sendFile(
-        path.join(__dirname, "client/build/index.html"),
-        function (err) {
-            if(err) {
-                res.status(500).send(err)
-            }
-        }
-    )
-})}
-
-
-app.listen(port, () => {
-    console.log(`Server is ALIVE on ${port}!`)
-})
+       app.get('*', (req, res) => {
+         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+       });
+   }}
+   
+   if(process.env.production === 'vercel')
+   {
+    
+       app.use(express.static(path.join(__dirname, "client/build")));
+   
+   app.get("*", function(_, res) {
+       res.sendFile(
+           path.join(__dirname, "client/build/index.html"),
+           function (err) {
+               if(err) {
+                   res.status(500).send(err)
+               }
+           }
+       )
+   })}
+   
+   
+   app.listen(port,()=>{
+       console.log(`Server is ALIVE on ${port}!`)
+   })   
