@@ -9,7 +9,7 @@
   },
   "scripts": {
     "heroku-prebuild": "npm install --dev",
-    "install-server": "npm install",
+    "install-server": "npm install --dev",
     "install-dependencies": " npm run install-client && npm run install-server ",
     "build-client": "cd client && npm run build",
     "install-client": "cd client && npm install",
