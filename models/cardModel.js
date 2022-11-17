@@ -30,4 +30,4 @@ const CardSchema = new mongoose.Schema({
 })
 
 const Card = mongoose.model("cards", CardSchema)
-export { Card, CardSchema }
+export default Card
