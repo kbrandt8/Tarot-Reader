@@ -9,6 +9,7 @@ function Dashboard() {
 
   const navigate = useNavigate()
   const { userInfo, isLoggedIn, deleteReading, theReadings,  showCards, showMeanings,birthCard,birthCardDashboard,todayCard,deck} = useContext(Context)
+  const [show,setShow] = useState(false)
   const birthDay = new Date(userInfo.birthDate)
   const today = new Date()
 
@@ -16,11 +17,13 @@ function Dashboard() {
     if (!isLoggedIn) {
       navigate('/')
     }
-    if (birthDay && deck <2) {
-      birthCardDashboard(birthDay, today)
-    }
-  }, [isLoggedIn, birthDay])
 
+  }, [isLoggedIn])
+
+  function card(){
+    birthCardDashboard(birthDay, today)
+    setShow(true)
+  }
 
 
   const userReadings = theReadings.map(reading => <div className="savedReadings" key={reading._id}>
@@ -70,8 +73,13 @@ function Dashboard() {
     <div>
       <>
         <h1>Welcome, {userInfo.name}</h1>
+{!show && 
 
-
+<button
+onClick={card}
+> Show Me Todays Cards!</button>
+}
+{ show &&
 
         <div className="showCards">
           {deck.length ===2 ? <div className="todaysCard">  
@@ -81,13 +89,14 @@ function Dashboard() {
           <div className="showCards">
       {showCards[0]}
       </div>
-      <div className="showMeanings">
-      {showMeanings[1]}
-      </div>
+
           </div>:
-          <h1>Set birthday for a birthCard</h1>
+          <Link to="/account"><h1>Set birthday for a birthCard</h1></Link>
 
           }
+
+
+
           {deck.length ===2 ? <div className="todaysCard">
 
             <>
@@ -95,14 +104,14 @@ function Dashboard() {
               <div className="showCards">
       {showCards[1]}
       </div>
-      <div className="showMeanings">
-      {showMeanings[1]}
-      </div>
+
             </>
-          </div> : <h1>Set your birthday to get Todays Card</h1>}
+          </div> : 
+          <Link to="/account"><h1> Set your birthday to get Todays Card</h1></Link>
+           }
 
 
-        </div>
+        </div>}
 
 
 

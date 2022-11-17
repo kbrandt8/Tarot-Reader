@@ -17,7 +17,7 @@ import Nav1 from './Nav';
 import Footer from './Footer';
 function App() {
   return (<div> 
-    <BrowserRouter >
+    <BrowserRouter basename='/' >
       <Nav1 />
       <main>
 

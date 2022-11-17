@@ -7,10 +7,9 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import { Card, Card2, Reading, User, oneCard, threeCard, fourCard, birthCard } from "./models/index.js"
+import { Card, Card2, User} from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
 import path from 'path'
-import { SlowBuffer } from "buffer"
 
 dotenv.config()
 app.use(express.json())
@@ -295,12 +294,29 @@ app.get("/getArcana",  (req, res) => {
 
 })
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'heroku') {
     app.use(express.static(path.join('client/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
+
+if(process.env.production === 'vercel')
+{
+ 
+    app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", function(_, res) {
+    res.sendFile(
+        path.join(__dirname, "client/build/index.html"),
+        function (err) {
+            if(err) {
+                res.status(500).send(err)
+            }
+        }
+    )
+})}
+
 
 app.listen(port, () => {
     console.log(`Server is ALIVE on ${port}!`)

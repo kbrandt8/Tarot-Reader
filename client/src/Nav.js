@@ -13,7 +13,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function Nav1() {
     const {isLoggedIn} = useContext(Context)
   return (
-    <Navbar fixed="top">
+    <Navbar fixed="top" expand="md">
       <Container>
         <Navbar.Brand as={NavLink} to="/">Tarot-Reader</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

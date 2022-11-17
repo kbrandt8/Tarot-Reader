@@ -125,7 +125,7 @@ nav {
 
 .navbar-brand,
 .navbar-brand:hover {
-  font-size: 3rem;
+  font-size: 4rem!important;
   font-family: 'Tangerine-bold';
   padding: 0px;
   margin: 0 auto;
@@ -140,6 +140,10 @@ nav {
 
 .dropdown-item {
   font-size: 1.2rem;
+}
+.nav-link, .dropdown-item{
+  text-align:center!important;
+  letter-spacing:3px;
 }
 
 .dropdown-item:hover,
