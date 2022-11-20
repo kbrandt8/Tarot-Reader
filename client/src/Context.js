@@ -206,18 +206,6 @@ setTimeout(()=>{
 
   // Get Cards Functionality
 
-  // async function getCards(type, config) {
-  //   setType(type)
-  //   if (config) {
-  //     Axios.get("/" + type, config)
-  //       .then(res => { setDeck(res.data) })
-  //   } else {
-  //     Axios.get("/" + type)
-  //       .then(res => setDeck(res.data))
-
-  //   }
-  // }
-
   async function getCards2(type,) {
     setType(type)
     let config = {
@@ -291,35 +279,6 @@ Axios.get("/getArcana", {headers:{'num1': card1,'num2': card2}})
 
 }
 
-
-
-
-  // function threeCard() {
-  //   deck.forEach(card => {
-  //     if (deck.indexOf(card) === 0) {
-  //       card.when = "past"
-  //     } if (deck.indexOf(card) === 1) {
-  //       card.when = "present"
-  //     } if (deck.indexOf(card) === 2) {
-  //       card.when = "future"
-  //     }
-  //   }
-
-  //   )
-  // }
-
-  // function reverse() {
-  //   deck.forEach(card => card.reverse = Math.floor(Math.random() * 10) > 4 ? true : false)
-  // }
-
-  // useEffect(() => {
-  //   if (type === 'threeCards') {
-  //     reverse()
-  //     threeCard()
-  //   } if (type === 'oneCard') {
-  //     reverse()
-  //   }
-  // }, [deck])
 
 
   // Save & Delete Readings1
