@@ -126,7 +126,7 @@ nav {
 .navbar-brand,
 .navbar-brand:hover {
   font-size: 4rem!important;
-  font-family: 'Tangerine-bold';
+  font-family: 'Tangerine-bold'!important;
   padding: 0px;
   margin: 0 auto;
   color: #440274;
