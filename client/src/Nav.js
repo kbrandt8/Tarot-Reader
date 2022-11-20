@@ -15,7 +15,7 @@ function Nav1() {
   return (
     <Navbar fixed="top" expand="md">
       <Container>
-        <Navbar.Brand as={Link} to="/">Tarot-Reader</Navbar.Brand>
+        <Navbar.Brand>Tarot-Reader</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
