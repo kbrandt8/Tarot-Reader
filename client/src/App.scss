@@ -47,7 +47,9 @@ input {
 }
 
 /* Links */
-
+button{
+  border:solid #000 1px;
+}
 button:hover {
   color: $light;
   background-color: rgb(104, 104, 104) !important;
@@ -78,7 +80,7 @@ input,
 button,
 footer,
 nav {
-  font-family: 'Didact Gothic';
+  font-family: 'Didact Gothic'!important;
 }
 
 h1,
@@ -390,6 +392,7 @@ section {
     display: block;
     text-align: center;
     margin: 0 auto;
+    color:#000!important;
   }
 }
 
