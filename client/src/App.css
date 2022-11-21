@@ -121,6 +121,12 @@ nav {
   border: solid #000 1px;
 }
 
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: 'Didact Gothic';
+}
+
 .navbar-brand,
 .navbar-brand:hover {
   font-size: 4rem!important;
@@ -129,11 +135,6 @@ nav {
   margin: 0 auto;
   color: #440274;
   text-transform: none;
-}
-
-.nav-link {
-  font-size: 1.2rem;
-  font-family: 'Didact Gothic';
 }
 
 .dropdown-item {
