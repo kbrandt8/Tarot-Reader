@@ -14,6 +14,7 @@ function Footer() {
   <Navbar>
       <Container>
         <Navbar.Brand >
+          
         {isLoggedIn ? <>Logged in as {userInfo.name} </>: "not logged in"}
 
         </Navbar.Brand>

@@ -124,11 +124,11 @@ nav {
 
 .nav-link {
   font-size: 1.2rem;
-  
 }
 
 .navbar-brand,
-.navbar-brand:hover {
+.navbar-brand:hover,
+a .navbar-brand {
   font-size: 4rem!important;
   font-family: 'Tangerine-bold'!important;
   padding: 0px;
