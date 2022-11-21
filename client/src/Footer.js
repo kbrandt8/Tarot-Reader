@@ -13,11 +13,15 @@ function Footer() {
   
   <Navbar>
       <Container>
+   
         <Navbar.Brand >
+        
           
         {isLoggedIn ? <>Logged in as {userInfo.name} </>: "not logged in"}
 
         </Navbar.Brand>
+
+
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           

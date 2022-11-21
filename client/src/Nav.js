@@ -16,7 +16,9 @@ function Nav1() {
     <Navbar fixed="top" expand="md">
       <Container>
         <Navbar.Brand>
+     
           Tarot-Reader
+
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
