@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import { NavLink,Link} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import { Context } from "./Context"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -31,11 +31,11 @@ function Nav1() {
                     {isLoggedIn && <Nav.Link as={NavLink} activeClassName="active"  to="/account">Account</Nav.Link>}
             
                        <NavDropdown title="Readings">
-              <NavDropdown.Item as={NavLink}  reloadDocument activeClassName="active"  to="/ThreeCardReading">Three Card Reading   </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} reloadDocument activeClassName="active"  to="/FourCardReading">Four Card Reading</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} reloadDocument activeClassName="active"  to="/CelticCrossReading">Celtic Cross Reading  </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} reloadDocument activeClassName="active"  to="/OneCardReading">One Card Reading   </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink}  reloadDocument activeClassName="active"  to="/TodaysCard">Todays Card  </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}   activeClassName="active"  to="/ThreeCardReading">Three Card Reading   </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/FourCardReading">Four Card Reading</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/CelticCrossReading">Celtic Cross Reading  </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/OneCardReading">One Card Reading   </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}   activeClassName="active"  to="/TodaysCard">Todays Card  </NavDropdown.Item>
               
 
 

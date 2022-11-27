@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Axios from "axios"
 import {Card,Meaning} from "./components"
-import Dashboard from "./pages/Dashboard"
 
 const Context = React.createContext()
 
@@ -206,17 +205,8 @@ setTimeout(()=>{
 
   // Get Cards Functionality
 
-  async function getCards2(type,) {
-    setType(type)
-    let config = {
-      headers: {
-        type
-      }
-    }
-      Axios.get("/getReading", config)
-        .then(res => { setDeck(res.data) })
-  }
   async function getCards(type,config) {
+    setDeck([])
     setType(type)
     let config2 = {
       headers: {
