@@ -44,7 +44,7 @@ function Start() {
 
 <h1>Four Card Reading</h1>
 <div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
-<p>"Past Present Future" reading.</p>
+<p>Best for Yes/No Questions</p>
 
 </Link>
 
@@ -56,7 +56,7 @@ function Start() {
 
 <div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
 <div className="showCardsStart"><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/><CgCardHearts/></div>
-<p>"Past Present Future" reading.</p>
+<p>Get a Full look at Your situation with a Celtic Cross Reading.</p>
 
 </Link>
       </Carousel.Item>

@@ -198,7 +198,7 @@ footer {
   max-width: 15rem;
   text-transform: none;
   display: inline-block;
-  word-wrap: break-word;
+  word-break: break-word;
   overflow: hidden;
 }
 
@@ -208,7 +208,7 @@ footer {
   text-align: center;
   text-transform: none;
   display: inline-block;
-  word-wrap: break-word;
+  word-break: break-word;
   overflow: hidden;
 }
 
@@ -237,12 +237,19 @@ a .cards:hover {
   margin: 0 auto;
 }
 
-.showCards,
+.showCards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .showMeanings,
 .showMeaningsCeltic {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  margin-top:0 auto;
+  justify-content: center;
   width: 100%;
 }
 
@@ -580,7 +587,8 @@ form>input {
 
   .showMeanings h1 {
     font-size: 4rem;
-    height: 5rem;
+    
+    height: 10rem;
   }
 
   .showMeanings h2 {
@@ -589,6 +597,7 @@ form>input {
   }
 
   .showMeanings p {
+    font-size: 2.1rem !important;;
     margin: 0 auto;
     width: 20rem;
   }
