@@ -184,18 +184,25 @@ setTimeout(()=>{
           'x-access-token': token
         }
       })
-  
-      .then(res => { setUserInfo(res.data);setTheReadings(res.data.readings) })
+      .then(res => {
+        if(res.data){
+          setUserInfo(res.data);setTheReadings(res.data.readings)
+        } else{
+            logOut()
+        }
+        
+       })
 
   }
 
   useEffect(() => {
-    if (token) {
+    if (typeof token === 'string') {
       getUserInfo()
       setIsLoggedIn(true)
    
     } else {
       setIsLoggedIn(false)
+      logOut()
     }
   }, [token])
 
