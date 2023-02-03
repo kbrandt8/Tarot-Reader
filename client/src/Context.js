@@ -185,8 +185,8 @@ setTimeout(()=>{
         }
       })
       .then(res => {
-        if(res.data){
-          setUserInfo(res.data);setTheReadings(res.data.readings) 
+        if( typeof res.data.email === 'string'){
+          setUserInfo(res.data);setTheReadings(res.data.readings)
         } else{
             logOut()
         }
