@@ -10,7 +10,8 @@ import {
   Dashboard,
   Account,
   FourCards,
-  CelticCross
+  CelticCross,
+  ForgotPassword
 } from './pages'
 
 import Nav1 from './Nav';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/Dashboard" element={<Dashboard/>}/>
           <Route path="/Account" element={<Account/>}/>
+          <Route path="/Forgotpassword" element={<ForgotPassword/>}/>
 
         </Routes>
 

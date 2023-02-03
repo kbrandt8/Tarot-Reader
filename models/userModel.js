@@ -12,6 +12,7 @@ const UserModel = new mongoose.Schema({
     birthDate:Date,
     email:{type:String,required:true},
     password:{type:String,required:true},
+    resetLink : {type:String},
     readings:[ReadingSchema]
 },
 {collection:'users'})

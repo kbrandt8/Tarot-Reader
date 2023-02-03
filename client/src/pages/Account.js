@@ -1,43 +1,56 @@
 import React, { useState, useContext, useEffect } from "react"
-import { useNavigate, Link } from 'react-router-dom'
+import { getDefaultLocale } from "react-datepicker"
+import { useNavigate} from 'react-router-dom'
 import { Context } from "../Context"
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 function Account() {
     const navigate = useNavigate()
     const { changeEmail, changePassword, changeName, changeBirthDate, event, userInfo, isLoggedIn } = useContext(Context)
-const [startDate, setStartDate] = useState(new Date());
+    const [isDisabled,setIsDisabled] = useState(false)
+    const [startDate,setStartDate] = useState("")
 const birthDay = new Date(userInfo.birthDate)
+const regEx = new RegExp(/^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/)
 
+const regExMonth = new RegExp(/\d\d/)
     useEffect(() => {
         if (!isLoggedIn) {
             navigate('/')
-        }if (birthDay ){
-            setStartDate(birthDay)
         }
     }, [isLoggedIn])
+
+
+
+    useEffect(()=>{
+        if(regEx.test(startDate)){
+           setIsDisabled(false)
+           console.log(startDate)
+        }else{
+           setIsDisabled(true)
+           console.log(startDate)
+        }
+    },[startDate])
+
 
     
     
     return (
-        <>
+        <div>
             {event && <h3>{event}</h3>}
-            <form onSubmit={e => { changeBirthDate(e) }}>
+            <form onSubmit={e => { changeBirthDate(e) }}> 
       
               
-                <h3>{birthDay ? "Change Birthday?" : "Set BirthDay?"}</h3>
-  <h3>Birthday:<br></br>{startDate.getMonth()+1}/{startDate.getDate()}/{startDate.getFullYear()}
-                </h3>
-                <DatePicker
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    peekNextMonth
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    name="birthDate" />
-                <button type="submit">Submit</button>
+                <h3>{birthDay ? "Change Birthday?"  : "Set BirthDay?"}</h3>
+{birthDay &&                <h3>Birthday:<br></br>{birthDay.getMonth()+1}/{birthDay.getDate()}/{birthDay.getFullYear()}
+                </h3>}
+               <h3> {isDisabled && "Please enter date in mm/dd/yyyy format"}</h3>
+
+                    <input
+                    placeholder="mm/dd/yyyy"
+                    onChange={(e)=>{setStartDate(e.target.value)}}
+                    value={startDate}
+                    name="birthDate"
+                    />
+                <button disabled={isDisabled} type="submit">Submit</button>
             </form>
 
             <form onSubmit={e => { changeName(e) }}>
@@ -61,7 +74,7 @@ const birthDay = new Date(userInfo.birthDate)
             </form>
 
 
-        </>
+        </div>
     )
 }
 

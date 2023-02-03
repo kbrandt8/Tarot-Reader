@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import Account from "./Account";
 import FourCards from "./FourCards";
 import CelticCross from "./CelticCross";
+import ForgotPassword from "./ForgotPassword";
 
 
 
@@ -21,5 +22,6 @@ Register,
 Dashboard,
 Account,
 FourCards,
-CelticCross
+CelticCross,
+ForgotPassword,
 }

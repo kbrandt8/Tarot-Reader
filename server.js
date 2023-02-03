@@ -7,7 +7,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import { Card, Card2, User} from "./models/index.js"
+import { Card, Card2, User } from "./models/index.js"
 import tarotDoc2 from "./tarotDoc2.js"
 import path from 'path'
 
@@ -16,7 +16,6 @@ app.use(express.json())
 app.use(cors())
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
 mongoose.connect(process.env.MONGO_URL)
 
 const port = process.env.PORT || 7000
@@ -29,7 +28,7 @@ app.post('/register', async (req, res) => {
             email: req.body.email,
             password: newPassword
         })
-       newUser.save()
+        newUser.save()
         const token = jwt.sign({
             name: req.body.name,
             email: req.body.email,
@@ -132,10 +131,10 @@ app.post('/addBirthDate', async (req, res) => {
     const token = req.headers['x-access-token']
     const decoded = jwt.verify(token, 'token')
     const email = decoded.email
-    console.log(req.body.birthDate)
+    const birthDate = new Date(req.body.birthDate)
     try {
         await User.findOneAndUpdate(
-            { email: email }, { birthDate: req.body.birthDate }
+            { email: email }, { birthDate }
         )
         return res.json({ status: 'ok', user: token })
 
@@ -154,7 +153,7 @@ app.get('/userinfo', async (req, res) => {
             status: 'ok',
             name: user.name,
             birthCard: user.birthCard,
-            birthDate:user.birthDate,
+            birthDate: user.birthDate,
             email: user.email,
             readings: user.readings
         })
@@ -229,23 +228,27 @@ app.get("/getReading", (req, res) => {
     const one = ["One Card Reading"]
     const three = ["Past", "Present", "Future"]
     const four = ["Question", "Expectation", "Answer", "Why"]
-    const celtic = ["Question","Situation","Root","Past","Possibilities","Future","Querent","What Helps","What Hurts","Outcome"]
+    const celtic = ["Question", "Situation", "Root", "Past", "Possibilities", "Future", "Querent", "What Helps", "What Hurts", "Outcome"]
     let num = 0
-    
     let title = []
 
-    if (type === "oneCard") {
-        num = 1
-        title = one
-    } if (type === "threeCards") {
-        num = 3
-        title = three
-    } if (type === "fourCards") {
-        num = 4
-        title = four
-    } if (type ==="celticCross"){
-        num = 10
-        title = celtic
+    switch (type) {
+        case "oneCard":
+            num = 1
+            title = one
+            break;
+        case "threeCards":
+            num = 3
+            title = three
+            break;
+        case "fourCards":
+            num = 4
+            title = four
+            break;
+        case "celticCross":
+            num = 10
+            title = celtic
+            break;
     }
 
     Card.aggregate(
@@ -254,8 +257,7 @@ app.get("/getReading", (req, res) => {
             if (err) {
                 res.json(err)
             } else {
-               result.forEach(card=>
-                { 
+                result.forEach(card => {
                     card.title = title[result.indexOf(card)];
                     card.isReversed = Math.floor(Math.random() * 10) > 5 ? true : false;
                 })
@@ -278,12 +280,12 @@ app.get("/birthCard", (req, res) => {
     })
 })
 
-app.get("/getArcana",  (req, res) => {
+app.get("/getArcana", (req, res) => {
     const num1 = parseInt(req.headers['num1'])
     const num2 = parseInt(req.headers['num2'])
 
-  Card.find({
-    num: [ num1, num2 ]
+    Card.find({
+        num: [num1, num2]
     }, (err, result) => {
         if (err) {
             res.json(err)
@@ -294,31 +296,31 @@ app.get("/getArcana",  (req, res) => {
 
 })
 
- 
-    if (process.env.production=== 'heroku') {
+
+if (process.env.production === 'heroku') {
     app.use(express.static(path.join('client/build')));
-       app.get('*', (req, res) => {
-         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-       });
-   }
-   
-   if(process.env.production === 'vercel')
-   {
-    
-       app.use(express.static(path.join(__dirname, "client/build")));
-   
-   app.get("*", function(_, res) {
-       res.sendFile(
-           path.join(__dirname, "client/build/index.html"),
-           function (err) {
-               if(err) {
-                   res.status(500).send(err)
-               }
-           }
-       )
-   })}
-   
-   
-   app.listen(port,()=>{
-       console.log(`Server is ALIVE on ${port}!`)
-   })   
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
+if (process.env.production === 'vercel') {
+
+    app.use(express.static(path.join(__dirname, "client/build")));
+
+    app.get("*", function (_, res) {
+        res.sendFile(
+            path.join(__dirname, "client/build/index.html"),
+            function (err) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+            }
+        )
+    })
+}
+
+
+app.listen(port, () => {
+    console.log(`Server is ALIVE on ${port}!`)
+})   

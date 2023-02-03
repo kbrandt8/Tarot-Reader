@@ -1,3 +1,4 @@
+ /* eslint-disable */ 
 import React,{useContext} from 'react'
 import { NavLink} from 'react-router-dom'
 import { Context } from "./Context"
@@ -25,17 +26,17 @@ function Nav1() {
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/">    </Nav.Link> 
          
-            {isLoggedIn ? <Nav.Link as={NavLink} activeClassName="active"  to="/dashboard">Dashboard</Nav.Link>
-                    : <Nav.Link as={NavLink} activeClassName="active"  to="/Login">Login</Nav.Link>}
+            {isLoggedIn ? <Nav.Link as={NavLink} activeclassname="active"  to="/dashboard">Dashboard</Nav.Link>
+                    : <Nav.Link as={NavLink} activeclassname="active"  to="/Login">Login</Nav.Link>}
 
-                    {isLoggedIn && <Nav.Link as={NavLink} activeClassName="active"  to="/account">Account</Nav.Link>}
+                    {isLoggedIn && <Nav.Link as={NavLink} activeclassname="active"  to="/account">Account</Nav.Link>}
             
                        <NavDropdown title="Readings">
-              <NavDropdown.Item as={NavLink}   activeClassName="active"  to="/ThreeCardReading">Three Card Reading   </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/FourCardReading">Four Card Reading</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/CelticCrossReading">Celtic Cross Reading  </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink}  activeClassName="active"  to="/OneCardReading">One Card Reading   </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink}   activeClassName="active"  to="/TodaysCard">Todays Card  </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}   activeclassname="active"  to="/ThreeCardReading">Three Card Reading   </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeclassname="active"  to="/FourCardReading">Four Card Reading</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeclassname="active"  to="/CelticCrossReading">Celtic Cross Reading  </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}  activeclassname="active"  to="/OneCardReading">One Card Reading   </NavDropdown.Item>
+              <NavDropdown.Item as={NavLink}   activeclassname="active"  to="/TodaysCard">Todays Card  </NavDropdown.Item>
               
 
 
@@ -50,36 +51,3 @@ function Nav1() {
 export default Nav1;
 
 
-
-
-
-// function Nav() {
-//     const { isLoggedIn} = useContext(Context)
-
-//     return (
-//         <nav>
-//           <NavLink to="/"><h1>Tarot Reader
-          
-//           </h1></NavLink>
-
-//             <ul>
-//                 <li> <NavLink reloadDocument activeClassName="active"  to="/ThreeCardReading">Three Card Reading</NavLink></li>
-//                 <li> <NavLink reloadDocument activeClassName="active"  to="/FourCardReading">Four Card Reading</NavLink></li>
-//                 <li> <NavLink reloadDocument activeClassName="active"  to="/CelticCrossReading">Celtic Cross Reading</NavLink></li>                
-//                 <li> <NavLink reloadDocument activeClassName="active"  to="/OneCardReading">One Card Reading</NavLink></li>
-//                 <li> <NavLink reloadDocument activeClassName="active"  to="/TodaysCard">Todays Card</NavLink></li>
-
-
-//                 <li> {isLoggedIn ? <NavLink activeClassName="active"  to="/dashboard">Dashboard</NavLink>
-//                     : <NavLink activeClassName="active"  to="/Login">Login</NavLink>}</li>
-
-//                     {isLoggedIn && <li><NavLink activeClassName="active"  to="/account">Account</NavLink></li>}
-//             </ul>
-
-//             <BsMoon/>
-
-//         </nav >
-//     )
-// }
-
-// export default Nav
