@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import { NavLink} from 'react-router-dom'
+import { NavLink,Link} from 'react-router-dom'
 import { Context } from "./Context"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -15,7 +15,7 @@ function Nav1() {
   return (
     <Navbar fixed="top" expand="md">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
      
           Tarot-Reader
 

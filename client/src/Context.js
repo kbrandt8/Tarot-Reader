@@ -199,8 +199,12 @@ setTimeout(()=>{
     if (typeof token === 'string') {
       getUserInfo()
       setIsLoggedIn(true)
+      console.log(userInfo)
+      console.log(token)
    
     } else {
+      console.log(userInfo)
+      console.log(token)
       setIsLoggedIn(false)
       logOut()
     }
