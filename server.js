@@ -150,6 +150,7 @@ app.get('/userinfo', async (req, res) => {
         const decoded = jwt.verify(token, 'token')
         const email = decoded.email
         const user = await User.findOne({ email: email })
+        console.log(user)
         return res.json({
             status: 'ok',
             name: user.name,
@@ -160,6 +161,7 @@ app.get('/userinfo', async (req, res) => {
         })
     } catch (err) {
         res.json({ status: 'error', error: 'invalid token' })
+        console.log(err)
     }
 
 })
