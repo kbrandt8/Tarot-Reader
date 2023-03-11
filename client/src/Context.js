@@ -200,10 +200,6 @@ setTimeout(()=>{
       getUserInfo()
       setIsLoggedIn(true)
       console.log(userInfo.email)
-      if(!userInfo.email){
-        logOut()
-      }
-   
     } else {
       logOut()
     }
@@ -213,6 +209,11 @@ setTimeout(()=>{
     getUserInfo()
   }, [userInfo])
 
+  useEffect(()=>{
+    if(userInfo.email.length ===0 || userInfo.email ==="undefined"  || !userInfo.email){
+      logOut()
+    }
+  },[userInfo])
 
   // Get Cards Functionality
 
