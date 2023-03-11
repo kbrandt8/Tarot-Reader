@@ -196,16 +196,15 @@ setTimeout(()=>{
   }
 
   useEffect(() => {
-    if (typeof token === 'string') {
+    if (token) {
       getUserInfo()
       setIsLoggedIn(true)
-      console.log(userInfo)
-      console.log(token)
+      
+      if(!userInfo.email){
+        logOut()
+      }
    
     } else {
-      console.log(userInfo)
-      console.log(token)
-      setIsLoggedIn(false)
       logOut()
     }
   }, [token])
@@ -213,6 +212,7 @@ setTimeout(()=>{
   useEffect(() => {
     getUserInfo()
   }, [userInfo])
+
 
   // Get Cards Functionality
 
