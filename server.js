@@ -161,6 +161,8 @@ app.get('/userinfo', async (req, res) => {
         })
     } catch (err) {
         res.json({ status: 'error', error: 'invalid token' })
+        res.clearCookie("jwt");
+        res.redirect("/");
         console.log(err)
     }
 
