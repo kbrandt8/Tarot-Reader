@@ -199,7 +199,7 @@ setTimeout(()=>{
     if (token) {
       getUserInfo()
       setIsLoggedIn(true)
-      
+      console.log(userInfo.email)
       if(!userInfo.email){
         logOut()
       }
