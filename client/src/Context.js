@@ -210,7 +210,7 @@ setTimeout(()=>{
   }, [userInfo])
 
   useEffect(()=>{
-    if(userInfo.email.length ===0 || userInfo.email ==="undefined"  || !userInfo.email){
+    if(!userInfo.email){
       logOut()
     }
   },[userInfo])
