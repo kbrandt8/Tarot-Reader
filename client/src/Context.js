@@ -209,11 +209,7 @@ setTimeout(()=>{
     getUserInfo()
   }, [userInfo])
 
-  useEffect(()=>{
-    if(!userInfo.email){
-      logOut()
-    }
-  },[userInfo])
+
 
   // Get Cards Functionality
 

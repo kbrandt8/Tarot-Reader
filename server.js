@@ -161,9 +161,9 @@ app.get('/userinfo', async (req, res) => {
         })
     } catch (err) {
         res.json({ status: 'error', error: 'invalid token' })
-        res.clearCookie("jwt");
+        res.clearCookie("token");
         res.redirect("/");
-        console.log(err)
+
     }
 
 })
@@ -308,7 +308,6 @@ app.get("/getArcana",  (req, res) => {
    
    if(process.env.production === 'vercel')
    {
-    
        app.use(express.static(path.join(__dirname, "client/build")));
    
    app.get("*", function(_, res) {
