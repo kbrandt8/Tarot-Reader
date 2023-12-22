@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Didact Gothic';
+  src: url(./DidactGothic-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Tangerine-bold';
+  src: url(./Tangerine-Bold.ttf)
+}
+
+html {
+  font-size: 15px;
+}
+
+nav,
+footer,
+button,
+input {
+  background-color: #eae2f0;
+}
+
+/* Links */
+
+button:hover {
+  color: #eae2f0;
+  background-color: rgb(104, 104, 104) !important;
+}
+
+a {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+a:hover {
+  text-transform: uppercase;
+}
+
+.active {
+  text-transform: uppercase;
+  color: #440274 !important;
+
+}
+
+/* Headers */
+
+a,
+h3,
+h5,
+p,
+input,
+button,
+footer {
+  font-family: 'Didact Gothic';
+}
+
+h1,
+h2,
+h4 {
+  font-family: 'Tangerine-bold';
+}
+
+h1 {
+  font-size: 2rem;
+  font-family: 'Tangerine-bold';
+  padding: 0px;
+  margin: 0 auto;
+  color: #440274;
+  text-transform: none;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin: .5rem;
+  text-transform: none;
+}
+
+h4 {
+  font-size: 2rem;
+  border-radius: 100px;
+  border: double #000 3px;
+  margin: 5px auto;
+  padding: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  padding: 5px;
+  margin: 0;
+}
+
+.carousel {
+  width: 100%;
+  background-color: #eae2f0;
+  height: 25rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.carousel h1 {
+  font-size: 3.5rem;
+  margin-top: 5rem;
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel p {
+  font-size: 2rem;
+  text-transform: none;
+  opacity: 1;
+  z-index: 1;
+}
+
+
+/* Page Setup */
+
+
+nav {
+  border: solid #000 1px;
+}
+
+
+.nav-link {
+  font-size: 1.2rem;
+}
+
+.navbar-brand,
+.navbar-brand:hover,
+a.navbar-brand,
+.navbar-brand active
+
+ {
+  font-size: 4rem!important;
+  font-family: 'Tangerine-bold'!important;
+  padding: 0px;
+  margin: 0 auto;
+  color: #440274;
+  text-transform: none;
+}
+
+.dropdown-item {
+  font-size: 1.2rem;
+}
+.nav-link, .dropdown-item{
+  text-align:center!important;
+  letter-spacing:3px;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background-color: #eae2f0;
+}
+
+
+main {
+  margin: 0 auto;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: #000 solid 1px;
+  text-align: center;
+  min-height: 20rem;
+}
+
+footer {
+  position: relative;
+  bottom: 0px;
+  border: #000 solid 1px;
+  text-align: center;
+  width: 100%;
+}
+
+.showCardsStart {
+  display: flex;
+  font-size: 3rem;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Sectioning */
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 10px;
+  border: 1px solid #000;
+}
+
+section>h5,
+input,
+button {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.tarotResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 5px;
+}
+
+
+/* Form */
+form {
+  margin: 5px auto;
+}
+
+form>input {
+  margin: 5px auto;
+}
+
+.date {
+  font-size: 2rem;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  font-family: 'Didact Gothic' !important;
+}

@@ -1,0 +1,232 @@
+
+
+
+
+@media only screen and (max-width:1000px) {
+    html {
+      font-size: 10px;
+    }
+  
+    main {
+  
+      width: 100%;
+    }
+  
+    .showMeanings h1 {
+      font-size: 2.5rem;
+      height: 5rem;
+    }
+  
+    .showMeanings h2 {
+      font-size: 2.5rem;
+      height: 3.1rem;
+    }
+  
+    .savedReadings {
+      border: solid #000 1px;
+      box-shadow: #000 5px 1px 10px;
+      margin: 1rem;
+    }
+  
+    h1 {
+      font-size: 3rem;
+    }
+  
+    h2 {
+      font-size: 2.5rem;
+    }
+  
+  
+    .dropdown-item,
+    .nav-link,
+    a,
+    h3,
+    h5,
+    p,
+    input,
+    button,
+    footer,
+    label,
+    nav {
+      font-size: 1.5rem;
+    }
+  
+    .cards img {
+      max-width: 11rem;
+    }
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name,
+    select,
+    .react-datepicker__header.react-datepicker__current-month,
+    .react-datepicker-time__header,
+    .react-datepicker-year-header
+   {
+      font-size: 1.5rem!important;
+    }
+  
+  .react-datepicker__month-container {
+      float: left;
+      width:20rem;
+  }
+  
+  .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+      width: 2rem!important;
+      line-height: 1rem!important;
+  
+  }
+  .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+      font-size: 1.5rem!important;
+  }
+  
+  }
+  
+@media only screen and (max-width:675px) {
+    html {
+      font-size: 7px;
+    }
+  
+    main {
+      width: 100%;
+      min-height: 50rem;
+    }
+  
+    .cards img {
+      max-width: 11rem;
+    }
+  
+  
+    h1 {
+      font-size: 3.5rem;
+    }
+  
+    h2 {
+      font-size: 2.5rem;
+    }
+  
+  
+  
+    .dropdown-item,
+    .nav-link,
+    label,
+    a,
+    h3,
+    h5,
+    p,
+    input,
+    button,
+    footer,
+    nav {
+      font-size: 2rem;
+    }
+  
+  
+  }
+  
+  @media only screen and (max-width:470px) {
+    html {
+      font-size: 5px;
+    }
+  
+    .cards img {
+      max-width: 10rem;
+    }
+  
+    h1 {
+      font-size: 5rem;
+    }
+  
+    h2 {
+      font-size: 4rem;
+    }
+  
+    .dropdown-item,
+    .nav-link,
+    a,
+    h3,
+    h5,
+    p,
+    input,
+    button,
+    footer,
+    label,
+    nav {
+      font-size: 3.2rem;
+    }
+  .todaysCard{
+    width:35%;
+  }
+    .showCardsCeltic1 {
+      width: 75%;
+      position: relative;
+      top: 0rem;
+    }
+  
+    .showMeanings h1 {
+      font-size: 4rem;
+      
+      height: 10rem;
+    }
+  
+    .showMeanings h2 {
+      font-size: 3rem;
+      height: 3.1rem;
+    }
+  
+    .showMeanings p {
+      font-size: 2.1rem !important;;
+      margin: 0 auto;
+      width: 20rem;
+    }
+  
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name,
+    select,
+    .react-datepicker__header.react-datepicker__current-month,
+    .react-datepicker-time__header,
+    .react-datepicker-year-header
+   {
+      font-size: 2.5rem!important;
+    }
+  
+  .react-datepicker__month-container {
+      float: left;
+      width:30rem;
+  }
+  
+  .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+      width: 3rem!important;
+      line-height: 2rem!important;
+  
+  }
+  .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+      font-size: 3rem!important;
+  }
+  
+  }
+  
+  
+  @media only screen and (max-width:400px) {
+  
+    .dropdown-item,
+    .nav-link,
+    .date,
+    a,
+    h3,
+    h5,
+    p,
+    input,
+    button,
+    footer,
+    label,
+    nav ,
+    select{
+      font-size: 3rem!important;
+    }
+    .todaysCard{
+      width:50%;
+    }
+  
+  
+  }
