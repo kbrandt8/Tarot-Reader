@@ -29,5 +29,5 @@ const CardSchema = new mongoose.Schema({
 
 })
 
-const Card = mongoose.model("cards", CardSchema)
+const Card = mongoose.models.Card ?? mongoose.model("Card", CardSchema)
 export default Card
