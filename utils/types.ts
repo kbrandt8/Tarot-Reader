@@ -9,3 +9,9 @@ export type CardType={
     isReversed:boolean
 
 }
+
+export type ReadingType={
+    title:string,
+    numCards:number,
+    cards:[CardType]
+}
