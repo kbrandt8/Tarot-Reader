@@ -3,6 +3,7 @@ import './css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from '@/components/nav';
 import Footer from '@/components/footer';
+import NextAuthProvider from './context/NextAuthProvider';
 
 export const metadata: Metadata = {
   title: 'Tarot--Reader',
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavBar />
+        <NextAuthProvider>
         {children}
+        </NextAuthProvider>
         <Footer />
       </body>
 
