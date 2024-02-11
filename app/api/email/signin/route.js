@@ -7,10 +7,9 @@ export async function POST(request) {
     const credentials = await request.json()
     const { username, password } = credentials
     console.log(username, password)
-    connectMongoDB();
+    await connectMongoDB();
     try {
         const logUser = await User.findOne({ email: username })
-        console.log(password, logUser.password)
         const isPasswordValid = await bcrypt.compare(
             password,
             logUser.password
