@@ -1,23 +1,20 @@
 import styled from "styled-components"
 import { CardType, ReadingType } from "./types"
 
-export const ReadingDiv = styled.section<{ $height: string, $width: string }>`
+export const ReadingDiv = styled.section`
 margin:10px auto;
 background-color:#eae2f0;
 display:flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;    
-width:${props => props.$width};
-height:${props => props.$height};
 `;
 
-export const CelticCross = styled.section<{ $height: string, $width: string }>`
+export const CelticCross = styled.section`
     margin:10px auto;
     border:0;
     background-color:#eae2f0;
-    width:${props => props.$width};
-    height:${props => props.$height};
+
     position:relative;
 
 :nth-child(1){

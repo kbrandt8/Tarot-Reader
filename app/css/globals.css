@@ -213,6 +213,11 @@ button {
   margin: 5px;
 }
 
+.cards{
+height:600px;
+width:800px;
+}
+
 
 /* Form */
 form {

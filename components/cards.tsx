@@ -10,24 +10,16 @@ export default function Reading({ data, type }:
         type: string
     }) {
 
-    const [windowSize, setWindowSize] = useState(300)
-    const readingWidth = windowSize * .75
-    const readingHeight = readingWidth / 1.5
-
-    useEffect(() => {
-        setWindowSize(window.innerWidth)
-    },[])
-
     if (type === "CelticCrossReading") {
         const tarotReading = data.map(
             (card: CardType) =>
                 <CelticCrossCard
                     $url={card.url}
                     $reversed={card.isReversed}
-                    key={card.id}
+                    key={card._id}
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
-            <CelticCross $height={readingHeight + `px`} $width={readingWidth + 'px'}>
+            <CelticCross className="cards">
                 {tarotReading}
             </CelticCross>
         )
@@ -39,10 +31,10 @@ export default function Reading({ data, type }:
                 <TarotCard
                     $url={card.url}
                     $reversed={card.isReversed}
-                    key={card.id}
+                    key={card._id}
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
-            <ReadingDiv $height={readingHeight + `px`} $width={readingWidth + 'px'}>
+            <ReadingDiv className="cards">
                 {tarotReading}
             </ReadingDiv>
         )

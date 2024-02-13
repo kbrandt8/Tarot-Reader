@@ -1,5 +1,5 @@
 export type CardType={
-    id:number,
+    _id:number,
     name:string,
     url:string,
     num:string,

@@ -1,7 +1,4 @@
 
-
-
-
 @media only screen and (max-width:1000px) {
     html {
       font-size: 10px;
@@ -12,21 +9,6 @@
       width: 100%;
     }
   
-    .showMeanings h1 {
-      font-size: 2.5rem;
-      height: 5rem;
-    }
-  
-    .showMeanings h2 {
-      font-size: 2.5rem;
-      height: 3.1rem;
-    }
-  
-    .savedReadings {
-      border: solid #000 1px;
-      box-shadow: #000 5px 1px 10px;
-      margin: 1rem;
-    }
   
     h1 {
       font-size: 3rem;
@@ -51,8 +33,9 @@
       font-size: 1.5rem;
     }
   
-    .cards img {
-      max-width: 11rem;
+    .cards {
+      height:500px;
+      width:750px;
     }
     .react-datepicker__day-name,
     .react-datepicker__day,
@@ -91,11 +74,6 @@
       min-height: 50rem;
     }
   
-    .cards img {
-      max-width: 11rem;
-    }
-  
-  
     h1 {
       font-size: 3.5rem;
     }
@@ -104,7 +82,10 @@
       font-size: 2.5rem;
     }
   
-  
+    .cards {
+      height:350px;
+      width:500px;
+    }
   
     .dropdown-item,
     .nav-link,
@@ -139,6 +120,11 @@
     h2 {
       font-size: 4rem;
     }
+
+    .cards {
+      height:235px;
+      width:350px;
+    }
   
     .dropdown-item,
     .nav-link,
@@ -153,31 +139,7 @@
     nav {
       font-size: 3.2rem;
     }
-  .todaysCard{
-    width:35%;
-  }
-    .showCardsCeltic1 {
-      width: 75%;
-      position: relative;
-      top: 0rem;
-    }
-  
-    .showMeanings h1 {
-      font-size: 4rem;
-      
-      height: 10rem;
-    }
-  
-    .showMeanings h2 {
-      font-size: 3rem;
-      height: 3.1rem;
-    }
-  
-    .showMeanings p {
-      font-size: 2.1rem !important;;
-      margin: 0 auto;
-      width: 20rem;
-    }
+
   
     .react-datepicker__day-name,
     .react-datepicker__day,
@@ -209,6 +171,11 @@
   
   @media only screen and (max-width:400px) {
   
+    .cards {
+      height:200px;
+      width:300px;
+    }
+
     .dropdown-item,
     .nav-link,
     .date,
@@ -224,9 +191,7 @@
     select{
       font-size: 3rem!important;
     }
-    .todaysCard{
-      width:50%;
-    }
+
   
   
   }
