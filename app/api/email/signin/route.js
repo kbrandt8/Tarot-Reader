@@ -6,7 +6,6 @@ import bcrypt from "bcrypt"
 export async function POST(request) {
     const credentials = await request.json()
     const { username, password } = credentials
-    console.log(username, password)
     await connectMongoDB();
     try {
         const logUser = await User.findOne({ email: username })
@@ -14,9 +13,18 @@ export async function POST(request) {
             password,
             logUser.password
         )
-        if (isPasswordValid){
-        const user = { id: logUser._id, name: logUser.name, email: logUser.email}
-        return NextResponse.json({ user })
+        if (isPasswordValid) {
+            
+            const user = { id: logUser._id, name: logUser.name, email: logUser.email }
+            const response = NextResponse.json({user})
+            const expiration = 24 * 60 * 60 * 1000 * 90
+            response.cookies.set({
+                name:'userId',
+                value: logUser._id.toString(),
+                expires:Date.now() + expiration
+            })
+            console.log(logUser._id.toString())
+            return response
         }
     } catch (error) {
         console.log(error)
@@ -25,7 +33,7 @@ export async function POST(request) {
 
 
 
-  
+
 
 
 }

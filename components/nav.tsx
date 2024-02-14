@@ -5,12 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
-
+import { useSession } from 'next-auth/react';
 
 
 
 export default function NavBar() {
-
+  const { data: session, status } = useSession();
   return (
     <Navbar fixed="top" expand="md">
       <Container>
@@ -23,18 +23,16 @@ export default function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} href="/">    </Nav.Link> 
-         
-            
+
                        <NavDropdown title="Readings">
               <NavDropdown.Item as={Link}    href={`/readings/ThreeCardReading`}>Three Card Reading   </NavDropdown.Item>
               <NavDropdown.Item as={Link}   href={`/readings/FourCardReading`}>Four Card Reading</NavDropdown.Item>
               <NavDropdown.Item as={Link}   href={`/readings/CelticCrossReading`}>Celtic Cross Reading  </NavDropdown.Item>
               <NavDropdown.Item as={Link}   href={`/readings/OneCardReading`}>One Card Reading   </NavDropdown.Item>
               <NavDropdown.Item as={Link}    href={`/readings/TodaysCard`}>Todays Card  </NavDropdown.Item>
-              
-
 
             </NavDropdown>
+            {status === 'authenticated' ? <Nav.Link as={Link} href="/api/auth/signout">Sign out</Nav.Link> :  <Nav.Link as={Link} href="/api/auth/signin">Sign in</Nav.Link> }
           </Nav>
         </Navbar.Collapse>
       </Container>

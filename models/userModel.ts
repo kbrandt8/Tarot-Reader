@@ -4,7 +4,7 @@ const UserModel = new mongoose.Schema({
     name:{type:String,required:true},
     birthDate:Date,
     email:{type:String,required:true},
-    password:{type:String,required:true},
+    password:{type:String},
     readings:[ReadingSchema]
 },
 {collection:'users'})

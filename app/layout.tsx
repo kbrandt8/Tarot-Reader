@@ -18,11 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
         <NextAuthProvider>
-        {children}
+          <NavBar />
+          {children}
+          <Footer />
         </NextAuthProvider>
-        <Footer />
+
       </body>
 
     </html>
