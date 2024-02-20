@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { NavLink } from 'react-bootstrap';
 
 
 
@@ -32,7 +33,13 @@ export default function NavBar() {
               <NavDropdown.Item as={Link}    href={`/readings/TodaysCard`}>Todays Card  </NavDropdown.Item>
 
             </NavDropdown>
-            {status === 'authenticated' ? <Nav.Link as={Link} href="/api/auth/signout">Sign out</Nav.Link> :  <Nav.Link as={Link} href="/api/auth/signin">Sign in</Nav.Link> }
+            {status === 'authenticated' ? 
+            <div>
+              <NavLink href={`/account/${session.user?.id}`} >Account</NavLink>
+              <Nav.Link as={Link} href="/api/auth/signout">Sign out</Nav.Link>
+              </div>
+               :
+                 <Nav.Link as={Link} href="/api/auth/signin">Sign in</Nav.Link> }
           </Nav>
         </Navbar.Collapse>
       </Container>

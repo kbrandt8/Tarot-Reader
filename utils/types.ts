@@ -15,3 +15,12 @@ export type ReadingType={
     numCards:number,
     cards:[CardType]
 }
+
+export type UserType = {
+    id: string,
+    name: string,
+    birthCard: string,
+    birthDate: string,
+    email: string,
+    readings: [ReadingType]
+}
