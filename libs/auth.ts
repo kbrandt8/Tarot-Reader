@@ -4,10 +4,15 @@ import CredentialsProvider from "next-auth/providers/credentials"
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks:{
-    async session({ session, token, user }) {
+    async session({ session, token }) {
+      const user = {
+        name:session.user?.name,
+        email:session.user?.email,
+
+      }
       const res = await fetch("http://localhost:3000/api/email/getUser", {
         method: 'POST',
-        body: JSON.stringify(session.user),
+        body: JSON.stringify(user),
         headers: { "Content-Type": "application/json" }
       })
       const { userId } = await res.json()
@@ -15,7 +20,17 @@ export const authOptions: NextAuthOptions = {
         session.user.id = userId || "";
       }
       return session;
+    },
+    async jwt({ token, account, profile }) {
+      if (account) {
+        token.accessToken = account.access_token
+        token.provider = account.provider
+      }
+      return token
     }
+  
+
+  
   },
 
   providers: [

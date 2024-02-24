@@ -9,13 +9,8 @@ export async function POST(req) {
         const user = await User.findOne({ email })
         if(user){
             const userId = user._id.toString()
-
-            if(user.provider){
-                return NextResponse.json({ userId});  
-            }else{
-                await User.updateOne({_id:userId},{provider})
-                return NextResponse.json({ userId}); 
-            }
+            return NextResponse.json({ userId}); 
+            
  
         }else{
             const newId = new mongoose.Types.ObjectId();
