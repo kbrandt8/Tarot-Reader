@@ -5,11 +5,18 @@ import User from "@/models/userModel"
 export async function POST(req) {
     try {
         await connectMongoDB();
-        const { name,email } = await req.json();
-        const user = await User.findOne({ email }).select("_id")
+        const { name,email,provider } = await req.json();
+        const user = await User.findOne({ email })
         if(user){
             const userId = user._id.toString()
-          return NextResponse.json({ userId});  
+
+            if(user.provider){
+                return NextResponse.json({ userId});  
+            }else{
+                await User.updateOne({_id:userId},{provider})
+                return NextResponse.json({ userId}); 
+            }
+ 
         }else{
             const newId = new mongoose.Types.ObjectId();
             await  User.create({

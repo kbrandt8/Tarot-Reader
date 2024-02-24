@@ -9,7 +9,6 @@ export default function AccountPage({ id }: { id: string }) {
     const [userInfo, setUserInfo] = useState<UserType>()
     const [getuserInfo, setGetUserInfo] = useState(true)
     const [date, setDate] = useState("")
-    const [email,setEmail] = useState("")
     const [name,setName] = useState("")
     const router = useRouter();
 
@@ -24,7 +23,6 @@ export default function AccountPage({ id }: { id: string }) {
         if (userInfo) {
             getDate(userInfo?.birthDate)
             setName(userInfo.name)
-            setEmail(userInfo.email)
         }
 
     },[userInfo])
@@ -49,7 +47,7 @@ export default function AccountPage({ id }: { id: string }) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                _id:id,name, email,birthDate:date
+                _id:id,name,birthDate:date
             })
         })
         if(res.ok){
@@ -62,7 +60,9 @@ export default function AccountPage({ id }: { id: string }) {
     function getDate(date: string) {
         const birthday = new Date(date)
         console.log(birthday)
-        const startDate = `${birthday.getFullYear()}-${"0" + (birthday.getMonth() + 1)}-${"0" + birthday.getDate()}`
+        let month = birthday.getMonth() + 1
+        let day = birthday.getDate()+1
+        const startDate = `${birthday.getFullYear()}-${month < 10 ? "0"+ month : month}-${day <10 ? "0"+day:day}`
         setDate(startDate)
     }
 
@@ -77,8 +77,6 @@ export default function AccountPage({ id }: { id: string }) {
                 {date ? <h3>Birthday:<br></br>{date}
                 </h3> : <h3>set up your birthday!</h3>}
                 <input type='date' value={date} onChange={(e) => { setDate(e.target.value) }} />
-                <h2>{userInfo.email}</h2>
-                <input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
                 <input type="submit" value="Submit Changes"/>
                 </form>
 
