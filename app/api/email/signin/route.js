@@ -23,7 +23,6 @@ export async function POST(request) {
                 value: logUser._id.toString(),
                 expires:Date.now() + expiration
             })
-            console.log(logUser._id.toString())
             return response
         }
     } catch (error) {
