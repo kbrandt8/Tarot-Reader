@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectMongoDB from '../../../libs/mongodb'
+import connectMongoDB from '../../../../libs/mongodb'
 import mongoose from "mongoose";
-import Card from '../../../models/cardModel'
+import Card from '../../../../models/cardModel'
 export async function GET(request, { params }) {
     const { reading } = params
     const one = ["One Card Reading"]

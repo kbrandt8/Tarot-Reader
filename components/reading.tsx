@@ -10,7 +10,7 @@ export default function Reading({ type }:
 
     const fetcher = (arg: string) => fetch(arg).then(res => res.json())
     const [startReading,setStartReading] = useState(false)
-    const { data, error, isLoading, mutate} = useSWR(startReading ? `/api/${type}` : null, fetcher);
+    const { data, error, isLoading, mutate} = useSWR(startReading ? `/api/readings/${type}` : null, fetcher);
     return (<>
         <button onClick={() => {!startReading ? setStartReading(true) :  mutate(`/api/${type}`) }}>Get Reading</button>
         {startReading &&

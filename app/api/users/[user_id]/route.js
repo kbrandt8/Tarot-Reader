@@ -1,12 +1,13 @@
+
 import { NextResponse } from "next/server"
 import connectMongoDB from '@/libs/mongodb'
 import mongoose from "mongoose";
 import User from "@/models/userModel"
-export async function POST(req) {
+export async function GET(request, { params }) {
+    const { user_id } = params
     try {
         await connectMongoDB();
-        const { userId } = await req.json();
-        const user = await User.findOne({ _id: userId })
+        const user = await User.findOne({ _id: user_id })
         if (user) {
             return NextResponse.json({
             id:user._id,

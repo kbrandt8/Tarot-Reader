@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 
 const ReadingSchema = new mongoose.Schema({
-    title: Array,
+    title: String,
     date: String,
     cards: Array,
     notes: String,

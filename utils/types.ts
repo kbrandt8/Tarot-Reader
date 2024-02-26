@@ -24,3 +24,11 @@ export type UserType = {
     email: string,
     readings: [ReadingType]
 }
+
+export type SavedReadingType={
+    _id:string,
+    date:string,
+    notes:string,
+    title:string,
+    cards:[CardType]
+}

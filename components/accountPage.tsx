@@ -28,14 +28,11 @@ export default function AccountPage({ id }: { id: string }) {
     },[userInfo])
 
     async function getUser(id: string) {
-        const res = await fetch(`../api/email/getUser/getUserInfo`, {
-            method: "POST",
+        const res = await fetch(`../api/users/${id}`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                userId: id
-            }),
             cache: "no-cache"
         }).then(res => res.json()).then(res => { setUserInfo(res) })
     }
