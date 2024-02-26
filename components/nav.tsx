@@ -36,6 +36,7 @@ export default function NavBar() {
             {status === 'authenticated' ? 
             <div>
               <NavLink href={`/account/${session.user?.id}`} >Account</NavLink>
+              <NavLink href={`/savedreadings/${session.user?.id}`} >Saved Readings </NavLink>
               <Nav.Link as={Link} href="/api/auth/signout">Sign out</Nav.Link>
               </div>
                :
