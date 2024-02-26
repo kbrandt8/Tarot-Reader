@@ -14,10 +14,17 @@ export async function POST(req, { params }) {
                 { _id: user_id },
                 { $push: { readings: reading } }
             )
+
+            return NextResponse.json({
+                "message":"Reading Added"
+            })
         } else if (user && !add) {
             await User.updateOne(
                 { _id: user_id }, 
                 { $pull: { readings: { _id: reading._id } } })
+                return NextResponse.json({
+                    "message":"Reading Deleted"
+                })
         } else {
             return NextResponse.json({ "message": "error, user not found" })
         }
