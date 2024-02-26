@@ -14,11 +14,16 @@ export default function Reading({ type }:
     const { data: session, status } = useSession();
     const user_id = session?.user?.id
     const fetcher = (arg: string) => fetch(arg).then(res => res.json())
+    function theDate() {
+        const date = new Date()
+        return (date.getMonth() + 1) + "/" + date.getDate() + "/" + (date.getFullYear() )
+      }
+      console.log(theDate())
     async function addReading(id: string, e: React.FormEvent) {
         e.preventDefault();
         if (id) {
             const reading = {
-                date: new Date(),
+                date: theDate(),
                 title,
                 notes,
                 cards: data.cards,
