@@ -9,8 +9,8 @@
 }
 
 @font-face {
-  font-family: 'Tangerine-bold';
-  src: url(./Tangerine-Bold.ttf)
+  font-family: 'Playwrite';
+  src: url(./PlaywriteAR-VariableFont_wght.ttf);
 }
 
 html {
@@ -21,7 +21,9 @@ nav,
 footer,
 button,
 input {
-  background-color: #eae2f0;
+  background-color: #000;
+  color: #eae2f0;
+  text-shadow: 0 0 10px #eae2f0 !important;
 }
 
 /* Links */
@@ -32,8 +34,7 @@ button:hover {
 }
 
 a {
-  color: #000 !important;
-  text-decoration: none;
+  color: #000
 }
 
 a:hover {
@@ -54,19 +55,20 @@ h5,
 p,
 input,
 button,
-footer {
-  font-family: 'Didact Gothic';
-}
-
-h1,
+footer,
 h2,
 h4 {
-  font-family: 'Tangerine-bold';
+  font-family: 'Didact Gothic';
+  text-decoration: none !important;
+}
+
+h1 {
+  font-family: 'Playwrite';
+  color: #000;
 }
 
 h1 {
   font-size: 2rem;
-  font-family: 'Tangerine-bold';
   padding: 0px;
   margin: 0 auto;
   color: #440274;
@@ -132,14 +134,12 @@ nav {
 .navbar-brand,
 .navbar-brand:hover,
 a.navbar-brand,
-.navbar-brand active
-
- {
-  font-size: 4rem!important;
-  font-family: 'Tangerine-bold'!important;
+.navbar-brand active {
+  font-size: 4rem !important;
+  font-family: 'Playwrite' !important;
   padding: 0px;
   margin: 0 auto;
-  color: #440274;
+  color: #eae2f0 !important;
   text-transform: none;
 }
 
@@ -149,6 +149,11 @@ a.navbar-brand,
 .nav-link, .dropdown-item{
   text-align:center!important;
   letter-spacing:3px;
+
+.nav-link,
+.dropdown-item {
+  text-align: center !important;
+  letter-spacing: 3px;
 }
 
 .dropdown-item:hover,
@@ -168,6 +173,7 @@ main {
   border: #000 solid 1px;
   text-align: center;
   min-height: 20rem;  
+  min-height: 20rem;
 }
 
 footer {
@@ -213,9 +219,9 @@ button {
   margin: 5px;
 }
 
-.cards{
-height:600px;
-width:800px;
+.cards {
+  height: 600px;
+  width: 800px;
 }
 
 
