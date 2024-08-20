@@ -11,7 +11,7 @@ export default function Saved({ id }: { id: string }) {
     const router = useRouter()
     const [userReadings, setUserReadings] = useState<SavedReadingType[]>()
     const [startFetch, setStartFetch] = useState(true)
-    const [message,setMessage] = useState("")
+    const [message, setMessage] = useState("")
 
     async function getReadings(id: string) {
         const res = await fetch(`../api/users/${id}`, {
@@ -27,27 +27,27 @@ export default function Saved({ id }: { id: string }) {
         const add = false;
         if (userReadings && userReadings.length > 0) {
             try {
-                        const res = await fetch(`../api/users/${userId}/readings`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    reading, add
-                }),
-                cache: "no-cache"
-            }
-            )
-            setStartFetch(true)    
+                const res = await fetch(`../api/users/${userId}/readings`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        reading, add
+                    }),
+                    cache: "no-cache"
+                }
+                )
+                setStartFetch(true)
             } catch (error) {
-             setMessage("Error")   
+                setMessage("Error")
             }
 
         }
     }
 
     useEffect(() => {
-        console.log(userReadings,startFetch)
+        console.log(userReadings, startFetch)
 
         if (startFetch) {
             getReadings(id)
@@ -58,7 +58,7 @@ export default function Saved({ id }: { id: string }) {
     const allReadings = userReadings?.map(
         (reading: SavedReadingType) =>
             <div key={reading._id}>
-                <h1>Title: {reading.title}</h1>
+                {reading.title && <h1>Title: {reading.title}</h1>}
                 <Cards type={reading.cards.length > 4 ? 'CelticCrossReading' : ""} data={reading.cards} />
                 <p>Notes: {reading.notes}</p>
                 <p>Date: {reading.date.toString()}</p>
@@ -70,7 +70,7 @@ export default function Saved({ id }: { id: string }) {
             {allReadings}
 
         </div>)
-    } else{
+    } else {
         <h1>Go save some readings!</h1>
     }
 
