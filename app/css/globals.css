@@ -148,10 +148,6 @@ a.navbar-brand,
   letter-spacing: 3px;
 }
 
-.dropdown-item:hover,
-.dropdown-item.active {
-  background-color: #eae2f0;
-}
 
 
 main {
