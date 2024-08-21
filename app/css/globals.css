@@ -146,9 +146,6 @@ a.navbar-brand,
 .dropdown-item {
   font-size: 1.2rem;
 }
-.nav-link, .dropdown-item{
-  text-align:center!important;
-  letter-spacing:3px;
 
 .nav-link,
 .dropdown-item {
@@ -172,7 +169,6 @@ main {
   justify-content: center;
   border: #000 solid 1px;
   text-align: center;
-  min-height: 20rem;  
   min-height: 20rem;
 }
 
