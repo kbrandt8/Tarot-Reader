@@ -2,21 +2,16 @@
 import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Link from 'next/link';
+import Nav from 'react-bootstrap/Nav';
+
 import { useSession } from 'next-auth/react';
 export default function Footer() {
   const { data: session, status } = useSession();
   return (
 
-    <Navbar>
+    <Navbar bg="dark" data-bs-theme="dark" >
       <Container>
-
-        <Navbar.Brand >
-
-
-
-        </Navbar.Brand>
-        {status === 'authenticated' ? <h1>Hi, {session.user?.name}! <Link href={`/savedreadings/${session.user?.id}`}>View your saved readings?</Link></h1> : <Link href="/api/auth/signin">Sign in</Link>}
+        {status === 'authenticated' ? <Container><h1>Hi, {session.user?.name}! </h1><Nav.Link href={`/savedreadings/${session.user?.id}`}>View your saved readings?</Nav.Link> </Container> : <Container><Nav.Link href="/api/auth/signin">Sign in</Nav.Link> </Container>}
 
 
         <Navbar.Toggle />
