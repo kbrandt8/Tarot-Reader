@@ -8,19 +8,19 @@ import { useSession } from 'next-auth/react';
 export default function Footer() {
   const { data: session, status } = useSession();
   return (
-
-    <Navbar bg="dark" data-bs-theme="dark" >
-      <Container>
-        {status === 'authenticated' ? <Container><h1>Hi, {session.user?.name}! </h1><Nav.Link href={`/savedreadings/${session.user?.id}`}>View your saved readings?</Nav.Link> </Container> : <Container><Nav.Link href="/api/auth/signin">Sign in</Nav.Link> </Container>}
-
-
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
+    <footer>
+      <Navbar bg="dark" data-bs-theme="dark" >
+        <Container>
+          {status === 'authenticated' ? <Container> <Nav.Link href={`/account/${session.user?.id}`}>Signed in as {session.user?.name}</Nav.Link> </Container> : <Container><Nav.Link href="/api/auth/signin">Sign in</Nav.Link> </Container>}
 
 
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
 
+
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </footer>
   )
 }
