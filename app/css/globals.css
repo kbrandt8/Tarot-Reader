@@ -43,8 +43,6 @@ a:hover {
 
 .active {
   text-transform: uppercase;
-  color: #440274 !important;
-
 }
 
 /* Headers */
@@ -65,13 +63,9 @@ h4 {
 h1 {
   font-family: 'Playwrite';
   color: #000;
-}
-
-h1 {
   font-size: 2rem;
   padding: 0px;
   margin: 0 auto;
-  color: #440274;
   text-transform: none;
 }
 
@@ -137,6 +131,7 @@ a.navbar-brand,
 .navbar-brand active {
   font-size: 4rem !important;
   font-family: 'Playwrite' !important;
+  text-shadow: 0 0 10px #eae2f0 !important;
   padding: 0px;
   margin: 0 auto;
   color: #eae2f0 !important;
