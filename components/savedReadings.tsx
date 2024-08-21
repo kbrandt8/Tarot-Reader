@@ -57,13 +57,14 @@ export default function Saved({ id }: { id: string }) {
 
     const allReadings = userReadings?.map(
         (reading: SavedReadingType) =>
-            <div key={reading._id}>
-                {reading.title && <h1>Title: {reading.title}</h1>}
+            <div key={reading._id} className="savedReading">
+                {reading.title ? <h1>{reading.title}</h1> : <h1>No title</h1>}
                 <Cards type={reading.cards.length > 4 ? 'CelticCrossReading' : ""} data={reading.cards} />
-                <p>Notes: {reading.notes}</p>
-                <p>Date: {reading.date.toString()}</p>
-                <button onClick={((e) => { deleteReading(id, reading, e); })}>Delete?</button>
-            </div>
+                <div className="border-image">
+                    <p>Notes: {reading.notes}</p>
+                    <p>Date: {reading.date.toString()}</p>
+                    <button onClick={((e) => { deleteReading(id, reading, e); })}>Delete?</button>
+                </div></div>
     )
     if (userReadings && userReadings.length > 0) {
         return (<div>

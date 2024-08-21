@@ -9,8 +9,10 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Welcome to Tarot-Reader!</h1>
-      <h3>What kind of reading are you looking for today?</h3>
+      <div className="welcome border-image">
+        <h1>Welcome to Tarot-Reader!</h1>
+        <h3>What kind of reading are you looking for today?</h3>
+      </div>
 
       <Carousel
         variant="dark"

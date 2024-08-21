@@ -1,197 +1,242 @@
-
 @media only screen and (max-width:1000px) {
-    html {
-      font-size: 10px;
-    }
-  
-    main {
-  
-      width: 100%;
-    }
-  
-  
-    h1 {
-      font-size: 3rem;
-    }
-  
-    h2 {
-      font-size: 2.5rem;
-    }
-  
-  
-    .dropdown-item,
-    .nav-link,
-    a,
-    h3,
-    h5,
-    p,
-    input,
-    button,
-    footer,
-    label,
-    nav {
-      font-size: 1.5rem;
-    }
-  
-    .cards {
-      height:500px;
-      width:750px;
-    }
-    .react-datepicker__day-name,
-    .react-datepicker__day,
-    .react-datepicker__time-name,
-    select,
-    .react-datepicker__header.react-datepicker__current-month,
-    .react-datepicker-time__header,
-    .react-datepicker-year-header
-   {
-      font-size: 1.5rem!important;
-    }
-  
+  html {
+    font-size: 10px;
+  }
+
+  main {
+
+    width: 100%;
+  }
+
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+
+  .dropdown-item,
+  .nav-link,
+  a,
+  h3,
+  h5,
+  p,
+  input,
+  button,
+  footer,
+  label,
+  nav {
+    font-size: 1.5rem;
+  }
+
+  .cards {
+    height: 500px;
+    width: 750px;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name,
+  select,
+  .react-datepicker__header.react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    font-size: 1.5rem !important;
+  }
+
   .react-datepicker__month-container {
-      float: left;
-      width:20rem;
+    float: left;
+    width: 20rem;
   }
-  
-  .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
-      width: 2rem!important;
-      line-height: 1rem!important;
-  
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    width: 2rem !important;
+    line-height: 1rem !important;
+
   }
-  .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
-      font-size: 1.5rem!important;
+
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    font-size: 1.5rem !important;
   }
-  
-  }
-  
+
+}
+
 @media only screen and (max-width:675px) {
-    html {
-      font-size: 7px;
-    }
-  
-    main {
-      width: 100%;
-      min-height: 50rem;
-    }
-  
-    h1 {
-      font-size: 3.5rem;
-    }
-  
-    h2 {
-      font-size: 2.5rem;
-    }
-  
-    .cards {
-      height:350px;
-      width:500px;
-    }
-  
-    .dropdown-item,
-    .nav-link,
-    label,
-    a,
-    h3,
-    h5,
-    p,
-    input,
-    button,
-    footer,
-    nav {
-      font-size: 2rem;
-    }
-  
-  
+  html {
+    font-size: 7px;
   }
-  
-  @media only screen and (max-width:470px) {
-    html {
-      font-size: 5px;
-    }
-  
-    .cards img {
-      max-width: 10rem;
-    }
-  
-    h1 {
-      font-size: 5rem;
-    }
-  
-    h2 {
-      font-size: 4rem;
-    }
 
-    .cards {
-      height:235px;
-      width:350px;
-    }
-  
-    .dropdown-item,
-    .nav-link,
-    a,
-    h3,
-    h5,
-    p,
-    input,
-    button,
-    footer,
-    label,
-    nav {
-      font-size: 3.2rem;
-    }
+  main {
+    width: 100%;
+    min-height: 50rem;
+  }
 
-  
-    .react-datepicker__day-name,
-    .react-datepicker__day,
-    .react-datepicker__time-name,
-    select,
-    .react-datepicker__header.react-datepicker__current-month,
-    .react-datepicker-time__header,
-    .react-datepicker-year-header
-   {
-      font-size: 2.5rem!important;
-    }
-  
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .cards {
+    height: 350px;
+    width: 500px;
+  }
+
+  .dropdown-item,
+  .nav-link,
+  label,
+  a,
+  h3,
+  h5,
+  p,
+  input,
+  button,
+  footer,
+  nav {
+    font-size: 2rem;
+  }
+
+
+}
+
+@media only screen and (max-width:470px) {
+  html {
+    font-size: 5px;
+  }
+
+  .cards img {
+    max-width: 10rem;
+  }
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  .cards {
+    height: 235px;
+    width: 350px;
+  }
+
+  .dropdown-item,
+  .nav-link,
+  a,
+  h3,
+  h5,
+  p,
+  input,
+  button,
+  footer,
+  label,
+  nav {
+    font-size: 3.2rem;
+  }
+
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name,
+  select,
+  .react-datepicker__header.react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    font-size: 2.5rem !important;
+  }
+
   .react-datepicker__month-container {
-      float: left;
-      width:30rem;
+    float: left;
+    width: 30rem;
   }
-  
-  .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
-      width: 3rem!important;
-      line-height: 2rem!important;
-  
-  }
-  .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
-      font-size: 3rem!important;
-  }
-  
-  }
-  
-  
-  @media only screen and (max-width:400px) {
-  
-    .cards {
-      height:200px;
-      width:300px;
-    }
 
-    .dropdown-item,
-    .nav-link,
-    .date,
-    a,
-    h3,
-    h5,
-    p,
-    input,
-    button,
-    footer,
-    label,
-    nav ,
-    select{
-      font-size: 3rem!important;
-    }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    width: 3rem !important;
+    line-height: 2rem !important;
 
-  
-  
   }
+
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    font-size: 3rem !important;
+  }
+
+}
+
+
+@media only screen and (max-width:400px) {
+
+  .cards {
+    height: 200px;
+    width: 300px;
+  }
+
+  .carousel {
+    height: 50rem;
+  }
+
+  .carousel h1 {
+    margin-top: 10rem;
+    font-size: 7rem;
+  }
+
+  .carousel p {
+    font-size: 5rem !important;
+    margin-top: 5rem;
+  }
+
+  .welcome {
+    width: 100%;
+  }
+
+  .carousel-control-next {
+    background-image: url(./pointinghand.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 75% !important;
+  }
+
+  .carousel-control-prev {
+    background-image: url(./pointinghand.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 75% !important;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  .dropdown-item,
+  .nav-link,
+  .date,
+  a,
+  h1,
+  h3,
+  h5,
+  p,
+  input,
+  button,
+  footer,
+  label,
+  nav,
+  select {
+    font-size: 5rem !important;
+  }
+
+
+
+}

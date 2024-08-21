@@ -16,9 +16,9 @@ export default function Reading({ type }:
     const fetcher = (arg: string) => fetch(arg).then(res => res.json())
     function theDate() {
         const date = new Date()
-        return (date.getMonth() + 1) + "/" + date.getDate() + "/" + (date.getFullYear() )
-      }
-      console.log(theDate())
+        return (date.getMonth() + 1) + "/" + date.getDate() + "/" + (date.getFullYear())
+    }
+    console.log(theDate())
     async function addReading(id: string, e: React.FormEvent) {
         e.preventDefault();
         if (id) {
@@ -56,7 +56,7 @@ export default function Reading({ type }:
         }
         {
             data && user_id ?
-                <form onSubmit={(e) => { addReading(user_id, e); router.push(`/savedreadings/${user_id}`) }}>
+                <form className="border-image" onSubmit={(e) => { addReading(user_id, e); router.push(`/savedreadings/${user_id}`) }}>
                     <h3>Save reading?</h3>
                     <label>Title</label>
                     <input type="text" onChange={(e) => { setTitle(e.target.value) }} value={title} />
