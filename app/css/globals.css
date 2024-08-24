@@ -15,6 +15,8 @@
 
 html {
   font-size: 15px;
+  scrollbar-color: #000 #eae2f0;
+  scrollbar-width: thin;
 }
 
 nav,
@@ -176,7 +178,34 @@ a.navbar-brand,
   letter-spacing: 3px;
 }
 
+.mobileNav {
+  background-color: #eae2f0 !important;
+}
 
+.mobileNav h1 {
+  text-shadow: 0 0 10px #000 !important;
+}
+
+.mobileNav a {
+  color: #000;
+  background-color: #fff;
+  display: block;
+  margin: .5rem;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: #000 solid 1px;
+}
+
+.mobileNav a:hover {
+  color: #eae2f0;
+  background-color: #000;
+
+}
+
+.mobileNav>ul {
+  color: #000;
+}
 
 main {
   margin: 0 auto;
