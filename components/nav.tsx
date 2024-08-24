@@ -35,19 +35,19 @@ export default function NavBar() {
           <h1>Account</h1>
           {status === 'authenticated' ?
             <div>
-              <Link href={`/account/${session.user?.id}`} >Account</Link>
-              <Link href={`/savedreadings/${session.user?.id}`} >Saved Readings </Link>
-              <Link href="/api/auth/signout">Sign out</Link>
+              <Link href={`/account/${session.user?.id}`} onClick={handleClose} >Account</Link>
+              <Link href={`/savedreadings/${session.user?.id}`} onClick={handleClose} >Saved Readings </Link>
+              <Link href="/api/auth/signout" onClick={handleClose} >Sign out</Link>
             </div>
             :
-            <Nav.Link href="/api/auth/signin">Sign in</Nav.Link>}
+            <Nav.Link href="/api/auth/signin" onClick={handleClose} >Sign in</Nav.Link>}
           <h1>Readings</h1>
 
-          <Link href={`/readings/ThreeCardReading`}>Three Card Reading   </Link>
-          <Link href={`/readings/FourCardReading`}>Four Card Reading</Link>
-          <Link href={`/readings/CelticCrossReading`}>Celtic Cross Reading  </Link>
-          <Link href={`/readings/OneCardReading`}>One Card Reading   </Link>
-          <Link href={`/readings/TodaysCard`}>Todays Card  </Link>
+          <Link href={`/readings/ThreeCardReading`} onClick={handleClose} >Three Card Reading   </Link>
+          <Link href={`/readings/FourCardReading`} onClick={handleClose} >Four Card Reading</Link>
+          <Link href={`/readings/CelticCrossReading`} onClick={handleClose} >Celtic Cross Reading  </Link>
+          <Link href={`/readings/OneCardReading`} onClick={handleClose} >One Card Reading   </Link>
+          <Link href={`/readings/TodaysCard`} onClick={handleClose} >Todays Card  </Link>
           <button onClick={handleClose} > Close Nav</button>
 
         </Offcanvas.Body>
