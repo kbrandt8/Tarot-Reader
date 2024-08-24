@@ -14,14 +14,18 @@ export default function Reading({ data, type }:
         const tarotReading = data.map(
             (card: CardType) =>
                 <CelticCrossCard
+                    className="celticCard"
                     $url={card.url}
                     $reversed={card.isReversed}
                     key={card._id}
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
-            <CelticCross className="cards">
-                {tarotReading}
-            </CelticCross>
+            <div className="tarotReading">
+                <h1>{type}</h1>
+                <CelticCross className="cards">
+                    {tarotReading}
+                </CelticCross>
+            </div>
         )
 
     }
@@ -29,14 +33,18 @@ export default function Reading({ data, type }:
         const tarotReading = data.map(
             (card: CardType) =>
                 <TarotCard
+                    className="tarotCard"
                     $url={card.url}
                     $reversed={card.isReversed}
                     key={card._id}
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
-            <ReadingDiv className="cards">
-                {tarotReading}
-            </ReadingDiv>
+            <div className="tarotReading">
+                <h1>{type}</h1>
+                <ReadingDiv className="cards">
+                    {tarotReading}
+                </ReadingDiv>
+            </div>
         )
     }
 }

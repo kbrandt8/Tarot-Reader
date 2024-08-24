@@ -4,7 +4,16 @@
     }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
+    .celticCard {
+        width: 15% !important;
+    }
+
+    .tarotCard {
+        height: 35% !important;
+    }
+
+    .tarotCard {}
 
     .navbar-brand,
     .navbar-brand:hover,
