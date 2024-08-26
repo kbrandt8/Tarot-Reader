@@ -47,12 +47,11 @@ export default function Reading({ type }:
     const [notes, setNotes] = useState("")
     const [title, setTitle] = useState("")
     const { data, error, isLoading, mutate } = useSWR(startReading ? `/api/readings/${type}` : null, fetcher);
-
     return (<>
         <button onClick={() => { !startReading ? setStartReading(true) : mutate(`/api/${type}`) }}>Get Reading</button>
         {startReading &&
             data &&
-            data.cards ? <Cards data={data.cards} type={type} /> : <h1></h1>
+            data.cards ? <Cards data={data.cards} type={type} /> : <h1 className="readingHeader">{type}</h1>
         }
         {
             data && user_id ?
