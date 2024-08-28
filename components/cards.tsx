@@ -11,6 +11,7 @@ export default function Reading({ data, type }:
         data: [CardType],
         type: string
     }) {
+    const [showMeaning, setShowMeaning] = useState(false)
 
     if (type === "CelticCrossReading") {
         const tarotReading = data.map(
@@ -48,7 +49,12 @@ export default function Reading({ data, type }:
                 <ReadingDiv className="cards">
                     {tarotReading}
                 </ReadingDiv>
-                <Meaning data={data} type={type} />
+
+                {showMeaning ? <div><Meaning data={data} type={type} />
+                    <button onClick={() => setShowMeaning(!showMeaning)}>Hide Interpretation</button></div> :
+                    <button onClick={() => setShowMeaning(!showMeaning)}>Show Interpretation</button>
+
+                }
             </div>
         )
     }

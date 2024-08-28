@@ -5,6 +5,10 @@ import useSWR, { mutate } from 'swr'
 import { useSession } from 'next-auth/react';
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
 export default function Reading({ type }:
     {
         type: string
@@ -21,7 +25,7 @@ export default function Reading({ type }:
     console.log(theDate())
     async function addReading(id: string, e: React.FormEvent) {
         e.preventDefault();
-        if (id) {
+        if (id && title) {
             const reading = {
                 date: theDate(),
                 title,
@@ -39,8 +43,10 @@ export default function Reading({ type }:
                 }),
                 cache: "no-cache"
             })
-
-
+            router.push(`/savedreadings/${user_id}`)
+        }
+        else {
+            alert("The title field is required")
         }
     }
     const [startReading, setStartReading] = useState(false)
@@ -55,15 +61,27 @@ export default function Reading({ type }:
         }
         {
             data && user_id ?
-                <form className="border-image" onSubmit={(e) => { addReading(user_id, e); router.push(`/savedreadings/${user_id}`) }}>
+                <Form className="border-image" onSubmit={(e) => { addReading(user_id, e); }}>
                     <h3>Save reading?</h3>
-                    <label>Title</label>
-                    <input type="text" onChange={(e) => { setTitle(e.target.value) }} value={title} />
-                    <label>Notes</label>
-                    <input type="text" onChange={(e) => { setNotes(e.target.value) }} value={notes} />
+                    <FloatingLabel
+                        controlId="floatingTitle"
+                        label="Title"
+                        className="mb-3"
+                    >
+                        <Form.Control type="text" placeholder="title" onChange={(e) => { setTitle(e.target.value) }} value={title} />
+                    </FloatingLabel>
+
+                    <FloatingLabel
+                        controlId="floatingNotes"
+                        label="Notes"
+                        className="mb-3"
+                    >
+                        <Form.Control type="text" placeholder="notes" onChange={(e) => { setNotes(e.target.value) }} value={notes} />
+                    </FloatingLabel>
+
                     <button title="Submit" type="submit" >Submit</button>
 
-                </form> :
+                </Form> :
                 <></>
 
         }

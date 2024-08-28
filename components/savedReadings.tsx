@@ -25,7 +25,7 @@ export default function Saved({ id }: { id: string }) {
     async function deleteReading(userId: string, reading: SavedReadingType, e: React.FormEvent) {
         e.preventDefault();
         const add = false;
-        if (userReadings && userReadings.length > 0) {
+        if (confirm(`Are you sure you want to delete ${reading.title}?`)) {
             try {
                 const res = await fetch(`../api/users/${userId}/readings`, {
                     method: "POST",
@@ -42,7 +42,6 @@ export default function Saved({ id }: { id: string }) {
             } catch (error) {
                 setMessage("Error")
             }
-
         }
     }
 
