@@ -5,13 +5,13 @@ import User from "@/models/userModel"
 export async function POST(req) {
     try {
         await connectMongoDB();
-        const { _id,name,birthDate } = await req.json();
+        const { _id, name, birthDate } = await req.json();
         const user = await User.findOne({ _id })
         if (user) {
             await User.updateOne(
-                {_id},{name,birthDate}
+                { _id }, { name, birthDate }
             )
-            return NextResponse.json({"message":"user updated successfully"})
+            return NextResponse.json({ "message": "user updated successfully" })
         } else {
             console.log("no user found")
             return NextResponse.json({ "message": "error, user not found" })

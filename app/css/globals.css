@@ -267,7 +267,16 @@ footer {
   margin: 1rem auto;
 }
 
+.account input {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0.5rem;
+}
 
+.account form {
+  width: 50%;
+}
 
 /* Sectioning */
 

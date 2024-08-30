@@ -10,12 +10,13 @@ export async function GET(request, { params }) {
         const user = await User.findOne({ _id: user_id })
         if (user) {
             return NextResponse.json({
-            id:user._id,
-            name: user.name,
-            birthCard: user.birthCard,
-            birthDate: user.birthDate,
-            email: user.email,
-            readings: user.readings });
+                id: user._id,
+                name: user.name,
+                birthCard: user.birthCard,
+                birthDate: user.birthDate,
+                email: user.email,
+                readings: user.readings
+            });
         } else {
             return NextResponse.json({ "message": "error, user not found" })
         }
