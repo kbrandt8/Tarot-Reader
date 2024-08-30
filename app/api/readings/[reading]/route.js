@@ -31,12 +31,13 @@ export async function GET(request, { params }) {
     }
     await connectMongoDB();
 
-    const cards = await Card.aggregate([{ $sample: {size:num} }])
+    const cards = await Card.aggregate([{ $sample: { size: num } }])
 
-    const result = cards.forEach(card => {
+    cards.forEach(card => {
         card.title = title[cards.indexOf(card)];
         card.isReversed = Math.floor(Math.random() * 10) > 5 ? true : false;
     })
+    console.log(cards)
     return NextResponse.json({ cards })
 
 }
