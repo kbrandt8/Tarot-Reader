@@ -43,7 +43,7 @@ export default function Reading({ type }:
                 }),
                 cache: "no-cache"
             })
-            router.push(`/savedreadings/${user_id}`)
+            router.push(`/savedreadings/`)
         }
         else {
             alert("The title field is required")

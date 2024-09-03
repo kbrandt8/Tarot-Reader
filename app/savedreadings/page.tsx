@@ -5,7 +5,7 @@ export default async function Page({ params }: { params: { userid: string } }) {
 
     return (
         <main>
-            <Saved id={userid} />
-       </main>
+            <Saved />
+        </main>
     )
 }

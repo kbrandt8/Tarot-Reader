@@ -2,16 +2,18 @@
 import { useEffect, useState } from "react"
 import { useSession } from 'next-auth/react';
 import { ReadingType, UserType, SavedReadingType } from '@/utils/types';
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation';
 import Cards from "./cards";
+import Link from "next/link";
 
 
-export default function Saved({ id }: { id: string }) {
+export default function Saved() {
     const { data: session, status } = useSession();
     const router = useRouter()
     const [userReadings, setUserReadings] = useState<SavedReadingType[]>()
     const [startFetch, setStartFetch] = useState(true)
     const [message, setMessage] = useState("")
+    const id = session?.user?.id.toString() || "redirect"
 
     async function getReadings(id: string) {
         const res = await fetch(`../api/users/${id}`, {
@@ -22,6 +24,7 @@ export default function Saved({ id }: { id: string }) {
             cache: "no-cache"
         }).then(res => res.json()).then(res => { setUserReadings(res.readings) })
     }
+
     async function deleteReading(userId: string, reading: SavedReadingType, e: React.FormEvent) {
         e.preventDefault();
         const add = false;
@@ -46,9 +49,9 @@ export default function Saved({ id }: { id: string }) {
     }
 
     useEffect(() => {
-        console.log(userReadings, startFetch)
-
-        if (startFetch) {
+        if (id === "redirect") {
+            redirect(`/api/auth/signin`)
+        } else if (startFetch) {
             getReadings(id)
             setStartFetch(false)
         }
@@ -68,10 +71,17 @@ export default function Saved({ id }: { id: string }) {
     if (userReadings && userReadings.length > 0) {
         return (<div>
             {allReadings}
-
         </div>)
     } else {
-        <h1>Go save some readings!</h1>
+        return (<main>
+            <h1>Save some readings!</h1>
+            <ul className="readingsList">
+                <li><h1><Link href={`/readings/ThreeCardReading`}> One Card</Link></h1></li>
+                <li><h1><Link href={`/readings/FourCardReading`}>Three Cards</Link> </h1></li>
+                <li><h1><Link href={`/readings/CelticCrossReading`}>Celtic Cross</Link> </h1></li>
+                <li><h1><Link href={`/readings/OneCardReading`}>One Card Reading</Link> </h1></li>
+            </ul>
+        </main>)
     }
 
 }

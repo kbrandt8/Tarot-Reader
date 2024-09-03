@@ -2,18 +2,22 @@
 import { UserType } from '@/utils/types';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect, ReactEventHandler } from 'react';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
-export default function AccountPage({ id }: { id: string }) {
+export default function AccountPage() {
     const { data: session, status } = useSession();
     const [userInfo, setUserInfo] = useState<UserType>()
     const [getuserInfo, setGetUserInfo] = useState(true)
     const [date, setDate] = useState("")
     const [name, setName] = useState("")
     const router = useRouter();
+    const id = session?.user?.id.toString() || "redirect"
 
     useEffect(() => {
         if (getuserInfo) {
+            if (id === "redirect") {
+                redirect(`/api/auth/signin`)
+            }
             getUser(id)
             setGetUserInfo(!getuserInfo)
         }

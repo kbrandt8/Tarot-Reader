@@ -36,7 +36,7 @@ export default function NavBar() {
           {status === 'authenticated' ?
             <div>
               <Link href={`/account/${session.user?.id}`} onClick={handleClose} >Account</Link>
-              <Link href={`/savedreadings/${session.user?.id}`} onClick={handleClose} >Saved Readings </Link>
+              <Link href={`/savedreadings/`} onClick={handleClose} >Saved Readings </Link>
               <Link href="/api/auth/signout" onClick={handleClose} >Sign out</Link>
             </div>
             :
