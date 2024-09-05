@@ -1,7 +1,6 @@
 import AccountPage from "@/components/accountPage"
-export default async function Page({ params }: { params: { user_id: string } }) {
-    const { user_id } = params
+export default async function Page() {
     return (<main>
-        <AccountPage id={user_id} />
+        <AccountPage />
     </main>)
 }
