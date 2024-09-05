@@ -287,6 +287,32 @@ footer {
   width: 50%;
 }
 
+.signIn {
+  width: 100%;
+}
+
+.signIn button {
+  font-family: 'Didact Gothic' !important;
+  letter-spacing: .1rem;
+  margin: 5px auto !important;
+  border-radius: 0px !important;
+}
+
+.signIn input {
+  padding: .5rem;
+  font-size: 1.2rem;
+}
+
+.signIn h2 {
+  margin-top: 1rem;
+}
+
+.signin form {
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* Sectioning */
 
 section {

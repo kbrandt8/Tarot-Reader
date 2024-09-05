@@ -37,7 +37,6 @@ export async function GET(request, { params }) {
         card.title = title[cards.indexOf(card)];
         card.isReversed = Math.floor(Math.random() * 10) > 5 ? true : false;
     })
-    console.log(cards)
     return NextResponse.json({ cards })
 
 }

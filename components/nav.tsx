@@ -35,12 +35,12 @@ export default function NavBar() {
           <h1>Account</h1>
           {status === 'authenticated' ?
             <div>
-              <Link href={`/account/${session.user?.id}`} onClick={handleClose} >Account</Link>
+              <Link href={`/account/`} onClick={handleClose} >Account</Link>
               <Link href={`/savedreadings/`} onClick={handleClose} >Saved Readings </Link>
-              <Link href="/api/auth/signout" onClick={handleClose} >Sign out</Link>
+              <Link href={"/signOut"} onClick={handleClose} >Sign out</Link>
             </div>
             :
-            <Nav.Link href="/api/auth/signin" onClick={handleClose} >Sign in</Nav.Link>}
+            <Nav.Link href={"/signIn"} onClick={handleClose} >Sign in</Nav.Link>}
           <h1>Readings</h1>
 
           <Link href={`/readings/ThreeCardReading`} onClick={handleClose} >Three Card Reading   </Link>
