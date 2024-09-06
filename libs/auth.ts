@@ -16,7 +16,8 @@ export const authOptions: NextAuthOptions = {
         body: JSON.stringify(user),
         headers: { "Content-Type": "application/json" }
       })
-      const { userId } = await res.json()
+      const result = await res.json()
+      const { userId } = await result
       if (session?.user) {
         session.user.id = userId || "";
       }
@@ -71,8 +72,8 @@ export const authOptions: NextAuthOptions = {
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" }
         })
-        const { user } = await res.json()
-        console.log(user)
+        const result = await res.json()
+        const { user } = await result
         if (res.ok && user) {
           return user
         }
