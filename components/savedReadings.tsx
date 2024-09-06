@@ -11,6 +11,7 @@ export default function Saved() {
     const { data: session, status } = useSession();
     const router = useRouter()
     const [userReadings, setUserReadings] = useState<SavedReadingType[]>()
+    const [userInfo, setUserInfo] = useState<UserType>()
     const [startFetch, setStartFetch] = useState(true)
     const [message, setMessage] = useState("")
     const id = session?.user?.id.toString() || "redirect"
@@ -22,7 +23,7 @@ export default function Saved() {
                 "Content-Type": "application/json"
             },
             cache: "no-cache"
-        }).then(res => res.json()).then(res => { setUserReadings(res.readings) })
+        }).then(res => res.json()).then(res => { setUserReadings(res.readings); setUserInfo(res) })
     }
 
     async function deleteReading(userId: string, reading: SavedReadingType, e: React.FormEvent) {
@@ -70,6 +71,7 @@ export default function Saved() {
     )
     if (userReadings && userReadings.length > 0) {
         return (<div>
+            <h1 className="border-image">Saved Readings for {userInfo?.name} </h1>
             {allReadings}
         </div>)
     } else {

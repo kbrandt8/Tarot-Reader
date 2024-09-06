@@ -7,7 +7,6 @@ export async function POST(req) {
         await connectMongoDB();
         const { name, email } = await req.json();
         const user = await User.findOne({ email })
-        console.log(name, email)
         if (user) {
             const userId = user._id.toString()
             return NextResponse.json({ userId });
