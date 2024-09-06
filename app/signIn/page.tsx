@@ -13,7 +13,6 @@ export default function Signin() {
         e.preventDefault();
         const response: any = await signIn("credentials", {
             email, password,
-            redirect: false
         });
         if (!response?.error) {
             router.push("/savedreadings");
@@ -27,8 +26,8 @@ export default function Signin() {
             <button onClick={() => { signIn('google'); }}>Google <FaGoogle /></button>
             <h2>Email</h2>
             <form onSubmit={(e) => { emailSignIn(e) }}>
-                <label>Email: </label><input type="email" onChange={(e) => { setEmail(e.target.value) }} />
-                <label>Password: </label><input type="password" onChange={(e) => { setPassword(e.target.value) }} />
+                <label>Email: </label><input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                <label>Password: </label><input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 <button type="submit">Sign In</button>
             </form>
             <h2>
