@@ -10,15 +10,24 @@
     }
 
     .tarotCard {
-        height: 35% !important;
+        height: 25% !important;
     }
 
-    .tarotCard {}
+    .readingHeader {
+        font-size: 1.5rem;
+    }
 
     .navbar-brand,
     .navbar-brand:hover,
     a.navbar-brand,
     .navbar-brand active {
-        font-size: 3rem !important;
+        margin: 0 !important;
+        font-size: 2rem !important;
+        word-break: break-all !important;
+    }
+
+    .tarotMeaning img {
+        width: 25%;
+        height: 75%;
     }
 }
