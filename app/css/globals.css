@@ -159,7 +159,7 @@ p {
 .navbar-brand:hover,
 a.navbar-brand,
 .navbar-brand active {
-  font-size: 4rem !important;
+  font-size: 2rem !important;
   font-family: 'Playwrite' !important;
   text-shadow: 0 0 10px #eae2f0 !important;
   padding: 0px;
@@ -331,6 +331,7 @@ button {
 }
 
 .readingHeader {
+  font-size: 1.5rem;
   margin: 1rem;
   letter-spacing: .5rem;
 }
