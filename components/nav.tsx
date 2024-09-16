@@ -21,7 +21,7 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand as={Link} href="/">
 
-          Tarot-Reader
+          Tarot Reader
 
         </Navbar.Brand>
         <Navbar.Toggle onClick={handleShow} />

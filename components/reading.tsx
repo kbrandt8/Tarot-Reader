@@ -113,9 +113,9 @@ export default function Reading({ type }:
     }
     else {
         return (<>
-            <button onClick={() => { setStartReading(true) }}>Get Reading</button>
-            {cards ? <Cards data={cards} type={type} /> : <h1 className="readingHeader">{type}</h1>
-            }
+            <h1 className="readingHeader">{type.replace(/([A-Z])/g, ' $1').trim()}</h1>
+
+            {cards ? <Cards data={cards} type={type} /> : <button onClick={() => { setStartReading(true) }}>Get Reading</button>}
             {
                 cards && user_id ?
                     <Form className="border-image" onSubmit={(e) => { addReading(user_id, e); }}>

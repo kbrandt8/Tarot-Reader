@@ -24,7 +24,7 @@ export default function Reading({ data, type }:
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
             <div className="tarotReading">
-                <h1 className="readingHeader">{type}</h1>
+
                 <CelticCross className="cards">
                     {tarotReading}
                 </CelticCross>
@@ -45,8 +45,7 @@ export default function Reading({ data, type }:
         )
         return (
             <div className="tarotReading">
-                <h1 className="readingHeader">{type}</h1>
-                <ReadingDiv className="cards">
+                <ReadingDiv >
                     {tarotReading}
                 </ReadingDiv>
 

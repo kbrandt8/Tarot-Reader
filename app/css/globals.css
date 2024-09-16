@@ -331,23 +331,23 @@ button {
 }
 
 .readingHeader {
-  font-size: 1.5rem;
-  margin: 1rem;
+  margin-top: -5rem;
+  margin-bottom: 5rem;
+  font-size: 2rem;
   letter-spacing: .5rem;
 }
 
 .cards {
-  height: 600px;
-  width: 800px;
+  margin-bottom: 2rem !important;
+  transform: scale(.9);
 }
+
 
 .tarotMeaning {
   margin: 0 auto;
   width: 75%;
   display: flex;
   flex-direction: row;
-  justify-items: center;
-  justify-content: baseline;
   padding: 15px;
 }
 
@@ -355,21 +355,31 @@ button {
   background-color: #eae2f0;
   border: solid 1px #000;
   font-size: 1.75rem;
-  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .readingsList {
   list-style-type: none;
 }
 
+.tarotMeaning {
+  max-width: 600px !important;
+  margin: 0 auto;
+}
+
 .tarotMeaning p {
+  display: inline-block;
   font-size: 1.5rem;
+  margin-left: 3rem;
   word-wrap: break-word;
+  width: 100%;
 }
 
 .tarotMeaning img {
-  width: 15%;
-  float: left;
+  display: inline-block;
+  max-height: 150px;
+  max-height: 265px;
 }
 
 .reversed {

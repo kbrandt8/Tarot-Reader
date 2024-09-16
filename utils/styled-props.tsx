@@ -2,19 +2,19 @@ import styled from "styled-components"
 import { CardType, ReadingType } from "./types"
 
 export const ReadingDiv = styled.section`
-margin:10px auto;
-background-color:#eae2f0;
+margin:0px auto;
 display:flex;
 flex-direction: row;
 align-items: center;
-justify-content: center;    
+justify-content: baseline;    
 `;
 
 export const CelticCross = styled.section`
-    margin:10px auto;
+    height:600px;
+    width: 800px;
+    display:inline-table;
+    margin-bottom: 5rem;
     border:0;
-    background-color:#eae2f0;
-
     position:relative;
 
 :nth-child(1){
@@ -64,19 +64,19 @@ export const CelticCross = styled.section`
 
 
 export const TarotCard = styled.section<{ $url?: string; $reversed?: boolean }>`
-        height:60%;
-        width:20%;
-        background-image: url(${props => '/' + props.$url});
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin:5px auto;
+        content: url(${props => '/' + props.$url});
+        display:inline-block;
+        max-width:150px;
+        max-height:265px;
+        overflow: hidden;
+        margin:5px;
         transform: ${props => props.$reversed && `scaley(-1)`};
         `;
 
 
 export const CelticCrossCard = styled(TarotCard)`
-        height:20%;
-        width: 7%;
+        max-width:100px;
+        max-height:177px;
+        display: inline-table;
         position:absolute;
 `
