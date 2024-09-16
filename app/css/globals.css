@@ -371,7 +371,6 @@ button {
 .tarotMeaning p {
   display: inline-block;
   font-size: 1.5rem;
-  margin-left: 3rem;
   word-wrap: break-word;
   width: 100%;
 }
@@ -379,7 +378,6 @@ button {
 .tarotMeaning img {
   display: inline-block;
   max-height: 150px;
-  max-height: 265px;
 }
 
 .reversed {
