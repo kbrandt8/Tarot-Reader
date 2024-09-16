@@ -6,7 +6,7 @@ margin:0px auto;
 display:flex;
 flex-direction: row;
 align-items: center;
-justify-content: baseline;    
+justify-content: center;    
 `;
 
 export const CelticCross = styled.section`
