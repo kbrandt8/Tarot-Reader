@@ -28,14 +28,18 @@ input {
   text-shadow: 0 0 10px #eae2f0 !important;
 }
 
+input {
+  font-size: 1.5rem !important;
+}
+
 /* Links */
 
 button {
+  background-color: #000;
   text-align: center;
-  margin: 0 auto !important;
-  padding: 1rem;
+  margin: 1rem auto !important;
+  padding: .5rem;
   font-size: 1.5rem !important;
-  border-radius: 50px !important;
   font-family: 'Playwrite' !important;
 }
 
@@ -95,9 +99,15 @@ h4 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 5px;
   margin: 0;
+}
+
+body .w-md-editor-text-pre>code,
+body .w-md-editor-text-input {
+  font-size: 23px !important;
+  line-height: 24px !important;
 }
 
 .carousel {

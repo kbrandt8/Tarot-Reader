@@ -11,8 +11,6 @@ export default function Reading({ data, type }:
         data: [CardType],
         type: string
     }) {
-    const [showMeaning, setShowMeaning] = useState(false)
-
     if (type === "CelticCrossReading") {
         const tarotReading = data.map(
             (card: CardType) =>
@@ -23,12 +21,11 @@ export default function Reading({ data, type }:
                     key={card._id}
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />)
         return (
-            <div className="tarotReading">
-
+            <div>
                 <CelticCross className="cards">
                     {tarotReading}
                 </CelticCross>
-                <Meaning data={data} type={type} />
+
             </div>
         )
 
@@ -44,16 +41,11 @@ export default function Reading({ data, type }:
                     title={`${card.title}: ${card.name} \(${card.isReversed ? "Reversed" : "Upright"}\)`} />
         )
         return (
-            <div className="tarotReading">
+            <div>
                 <ReadingDiv >
                     {tarotReading}
                 </ReadingDiv>
 
-                {showMeaning ? <div><Meaning data={data} type={type} />
-                    <button onClick={() => setShowMeaning(!showMeaning)}>Hide Interpretation</button></div> :
-                    <button onClick={() => setShowMeaning(!showMeaning)}>Show Interpretation</button>
-
-                }
             </div>
         )
     }

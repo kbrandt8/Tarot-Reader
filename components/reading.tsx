@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation'
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Meaning from "./meaning";
+import MDEditor from "@uiw/react-md-editor";
 
 export default function Reading({ type }:
     {
@@ -16,6 +18,9 @@ export default function Reading({ type }:
     const [title, setTitle] = useState("")
     const [cards, setCards] = useState()
     const [birthDate, setBirthDate] = useState("")
+    const [startInterpretation, setStartInterpretation] = useState(false)
+    const [showInterpretation, setShowInterpretation] = useState(false)
+    const [aiInterpretation, setAiInterpretation] = useState("# loading...")
     const router = useRouter()
     const { data: session, status } = useSession();
     const user_id = session?.user?.id
@@ -48,6 +53,24 @@ export default function Reading({ type }:
         else {
             alert("The title field is required")
         }
+    }
+
+    async function getAi() {
+        console.log(type, cards)
+
+        const res = await fetch('/api/interpretation', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                type, cards
+            }),
+            cache: "no-cache"
+        }
+        )
+        const interpretation = await res.json()
+        setAiInterpretation(interpretation.msg)
     }
 
     useEffect(() => {
@@ -89,6 +112,13 @@ export default function Reading({ type }:
         }
     }, [startReading, birthDate, type])
 
+    useEffect(() => {
+        if (startInterpretation) {
+            getAi()
+            setStartInterpretation(false)
+            setShowInterpretation(true)
+        }
+    })
 
 
     if (type === "TodaysCard") {
@@ -114,8 +144,27 @@ export default function Reading({ type }:
     else {
         return (<>
             <h1 className="readingHeader">{type.replace(/([A-Z])/g, ' $1').trim()}</h1>
+            {cards ? <div className="tarotReading">
+                <Cards data={cards} type={type} />
+                {showInterpretation ?
+                    <div>
+                        <MDEditor.Markdown
+                            source={aiInterpretation}
+                            skipHtml={true}
+                        />
+                        <button onClick={() => { setNotes(aiInterpretation) }}>Add AI to notes?</button>
+                    </div>
+                    :
+                    <button onClick={() => { setStartInterpretation(true) }}>Get AI Interpretation</button>
+                }
 
-            {cards ? <Cards data={cards} type={type} /> : <button onClick={() => { setStartReading(true) }}>Get Reading</button>}
+
+                <Meaning data={cards} type={type} />
+            </div>
+
+                : <button onClick={() => { setStartReading(true) }}>Get Reading</button>}
+
+
             {
                 cards && user_id ?
                     <Form className="border-image" onSubmit={(e) => { addReading(user_id, e); }}>
@@ -127,14 +176,14 @@ export default function Reading({ type }:
                         >
                             <Form.Control type="text" placeholder="title" onChange={(e) => { setTitle(e.target.value) }} value={title} />
                         </FloatingLabel>
-
-                        <FloatingLabel
-                            controlId="floatingNotes"
-                            label="Notes"
-                            className="mb-3"
-                        >
-                            <Form.Control type="text" placeholder="notes" onChange={(e) => { setNotes(e.target.value) }} value={notes} />
-                        </FloatingLabel>
+                        <MDEditor
+                            height="100%"
+                            value={notes}
+                            autoFocus={false}
+                            preview="edit"
+                            onChange={(e) => { typeof e === 'string' && setNotes(e) }}
+                            previewOptions={{ skipHtml: true }}
+                        />
 
                         <button title="Submit" type="submit" >Submit</button>
 

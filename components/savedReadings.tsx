@@ -5,6 +5,7 @@ import { ReadingType, UserType, SavedReadingType } from '@/utils/types';
 import { redirect, useRouter } from 'next/navigation';
 import Cards from "./cards";
 import Link from "next/link";
+import MDEditor from "@uiw/react-md-editor";
 
 
 export default function Saved() {
@@ -64,7 +65,10 @@ export default function Saved() {
                 {reading.title ? <h1>{reading.title}</h1> : <h1>No title</h1>}
                 <Cards type={reading.cards.length > 4 ? 'CelticCrossReading' : ""} data={reading.cards} />
                 <div className="border-image">
-                    <p>Notes: {reading.notes}</p>
+                    <MDEditor.Markdown
+                        source={reading.notes}
+                        skipHtml={true}
+                    />
                     <p>Date: {reading.date.toString()}</p>
                     <button onClick={((e) => { deleteReading(id, reading, e); })}>Delete?</button>
                 </div></div>
